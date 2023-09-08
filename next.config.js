@@ -4,7 +4,6 @@ const nextConfig = () => {
   return {
     reactStrictMode: false,
     swcMinify: true,
-    distDir: "build",
     basePath: "",
     images: {
       dangerouslyAllowSVG: true,
