@@ -69,7 +69,7 @@
 
 .bg {
   position: absolute;
-  right: -2.5%;
+  right: 0%;
   bottom: -6px;
   color: var(--color-primary);
   z-index: -1;
