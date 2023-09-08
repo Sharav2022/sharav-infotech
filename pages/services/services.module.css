@@ -80,11 +80,22 @@
   line-height: 1.3;
   color: var(--color-gray-900);
   text-align: left;
+  font-size: calc(2.375rem + 1.875vw);
+  max-width: 97%;
+  padding: 0px 1.5%;
+  margin-top: 0px;
   padding-bottom: 0.5rem;
-  font-size: calc(1.375rem + 1.5vw);
+  background: #6366f1;
+  background: linear-gradient(to right, #6366f1 0%, #000000 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 @media screen and (min-width: 500px) {
   .social_links {
     left: 40px;
+  }
+  .service_headline {
+    padding-left: 0px;
   }
 }
