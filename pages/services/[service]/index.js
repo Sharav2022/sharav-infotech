@@ -20,8 +20,6 @@ const Service = (props) => {
     }
   }, [router]);
 
-  console.log("service", service);
-
   return (
     service && (
       <div className={classes.container}>
@@ -40,16 +38,14 @@ const Service = (props) => {
           <ServiceCard {...service} detailed={true} />
         </div>
         {service.solutions && (
-          <Animate animation="fade-left">
-            <div className={"container " + classes.our_solution}>
-              <h1 className={classes.os_title}>Our Solutions</h1>
-              <ul className={classes.solutions}>
-                {service.solutions.map((sol) => (
-                  <li>{sol}</li>
-                ))}
-              </ul>
-            </div>
-          </Animate>
+          <div className={"container " + classes.our_solution}>
+            <h1 className={classes.os_title}>Our Solutions</h1>
+            <ul className={classes.solutions}>
+              {service.solutions.map((sol) => (
+                <li>{sol}</li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     )
