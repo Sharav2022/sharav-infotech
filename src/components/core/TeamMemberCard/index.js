@@ -1,10 +1,9 @@
 import classes from "./team-member-card.module.css";
 
-import LinkedinIcon from "@/assets/icons/linkedin.svg";
-import FacebookIcon from "@/assets/icons/facebook.svg";
-import TwitterIcon from "@/assets/icons/twitter.svg";
-import InstagramIcon from "@/assets/icons/instagram.svg";
-import Image from "next/image";
+import LinkedinIcon from "../../../assets/icons/linkedin.svg";
+import FacebookIcon from "../../../assets/icons/facebook.svg";
+import TwitterIcon from "../../../assets/icons/twitter.svg";
+import InstagramIcon from "../../../assets/icons/instagram.svg";
 import { useState } from "react";
 
 const TeamMemberCard = ({ mediaUrl, name, position, socialLinks = [] }) => {

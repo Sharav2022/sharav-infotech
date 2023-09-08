@@ -1,6 +1,6 @@
 import classes from "./main-carousel-section.module.css";
-import { CarouselItems, SocialLinks } from "@/globals/mock";
-import Carousel from "@/components/core/Carousel";
+import { CarouselItems, SocialLinks } from "../../../../../globals/mock";
+import Carousel from "../../../../core/Carousel";
 
 const MainCarouselSection = (props) => {
   const socialLinkHandler = (url) => {

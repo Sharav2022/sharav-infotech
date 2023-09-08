@@ -1,8 +1,8 @@
 import classes from "./carousel.module.css";
 import Slider from "react-slick";
-import LeftArrowIcon from "@/assets/icons/left-arrow-white-lg.svg";
-import RightArrowIcon from "@/assets/icons/right-arrow-white-lg.svg";
-import useIsMobile from "@/components/hooks/useIsMobile";
+import LeftArrowIcon from "../../../assets/icons/left-arrow-white-lg.svg";
+import RightArrowIcon from "../../../assets/icons/right-arrow-white-lg.svg";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const Carousel = ({ components = [] }) => {
   const isMobile = useIsMobile({ breakpoint: 768 });

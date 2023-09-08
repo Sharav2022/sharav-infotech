@@ -1,6 +1,10 @@
-import Image from "next/image";
 import classes from "./service-card.module.css";
-import { Designs, JOB_OPENING, TestingResults, langs } from "@/globals/mock";
+import {
+  Designs,
+  JOB_OPENING,
+  TestingResults,
+  langs,
+} from "../../../globals/mock";
 import Animate from "../Animate";
 
 const ServiceCard = ({

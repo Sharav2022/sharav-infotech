@@ -1,6 +1,6 @@
-import { WHY_US_CARDS, WHY_US_DESCRIPTION } from "@/globals/mock";
+import { WHY_US_CARDS, WHY_US_DESCRIPTION } from "../../../../../globals/mock";
 import classes from "./why-us-section.module.css";
-import WhyusCard from "@/components/core/WhyusCard";
+import WhyusCard from "../../../../core/WhyusCard";
 
 const WhyusSection = (props) => {
   return (

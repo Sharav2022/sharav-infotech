@@ -1,6 +1,6 @@
 import classes from "./menu.module.css";
-import CrossIcon from "@/assets/icons/cross.svg";
-import { HeaderItems } from "@/globals/mock";
+import CrossIcon from "../../../assets/icons/cross.svg";
+import { HeaderItems } from "../../../globals/mock";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

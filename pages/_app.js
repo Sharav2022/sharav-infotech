@@ -1,5 +1,5 @@
-import Layout from "@/components/main/Layout";
-import "@/styles/globals.css";
+import Layout from "../src/components/main/Layout";
+import "../src/styles/globals.css";
 import { Manrope } from "next/font/google";
 
 const manrope = Manrope({

@@ -1,16 +1,15 @@
-import { HeaderItems } from "@/globals/mock";
+import { HeaderItems } from "../../../globals/mock";
 import classes from "./header.module.css";
-import LogoIcon from "@/assets/icons/logo.svg";
+import LogoIcon from "../../../assets/icons/logo.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import MenuIcon from "@/assets/icons/menu.svg";
+import MenuIcon from "../../../assets/icons/menu.svg";
 import { useEffect, useState } from "react";
 import Menu from "../Menu";
-import useIsMobile from "@/components/hooks/useIsMobile";
-import LogoGif from "@/assets/images/sil.gif";
-import SharavLogo from "@/assets/icons/SharavInfotechLogo.jpeg";
-import Image from "next/image";
-import Dropdown from "@/components/core/Dropdown";
+import useIsMobile from "../../hooks/useIsMobile";
+// import LogoGif from "../src/assets/images/sil.gif";
+// import SharavLogo from "../src/assets/icons/SharavInfotechLogo.jpeg";
+import Dropdown from "../../core/Dropdown";
 
 const Header = (props) => {
   const router = useRouter();

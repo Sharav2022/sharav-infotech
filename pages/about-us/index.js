@@ -5,18 +5,18 @@ import {
   JOB_OPENING,
   TEAM,
   TESTIMONIALS,
-} from "@/globals/mock";
+} from "../../src/globals/mock";
 import classes from "./about-us.module.css";
-import Animate from "@/components/core/Animate";
+import Animate from "../../src/components/core/Animate";
 import Head from "next/head";
-import ClutchLogo from "@/assets/icons/clutch_logo.svg";
-import FullStarIcon from "@/assets/icons/fullstar.svg";
-import QuoteIcon from "@/assets/icons/quote.svg";
-import LeftArrowIcon from "@/assets/icons/left-arrow-white-lg.svg";
-import RightArrowIcon from "@/assets/icons/right-arrow-white-lg.svg";
+import ClutchLogo from "../../src/assets/icons/clutch_logo.svg";
+import FullStarIcon from "../../src/assets/icons/fullstar.svg";
+import QuoteIcon from "../../src/assets/icons/quote.svg";
+import LeftArrowIcon from "../../src/assets/icons/left-arrow-white-lg.svg";
+import RightArrowIcon from "../../src/assets/icons/right-arrow-white-lg.svg";
 import { useState } from "react";
-import ServiceCard from "@/components/core/ServiceCard";
-import TeamMemberCard from "@/components/core/TeamMemberCard";
+import ServiceCard from "../../src/components/core/ServiceCard";
+import TeamMemberCard from "../../src/components/core/TeamMemberCard";
 const AboutUsPage = () => {
   const [activeTestimony, setActiveTestimony] = useState(0);
 

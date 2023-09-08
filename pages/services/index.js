@@ -1,8 +1,8 @@
-import { Services } from "@/globals/mock";
+import { Services } from "../../src/globals/mock";
 import classes from "./services.module.css";
-import ServiceCard from "@/components/core/ServiceCard";
-import CircleBGIcon from "@/assets/icons/circle-bg.svg";
-import Animate from "@/components/core/Animate";
+import ServiceCard from "../../src/components/core/ServiceCard";
+import CircleBGIcon from "../../src/assets/icons/circle-bg.svg";
+import Animate from "../../src/components/core/Animate";
 import Head from "next/head";
 const ServicesPage = () => {
   return (

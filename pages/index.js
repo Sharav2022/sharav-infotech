@@ -1,11 +1,11 @@
 import Head from "next/head";
-import classes from "@/styles/Home.module.css";
+import classes from "../src/styles/Home.module.css";
 import {
   MainCarouselSection,
   ServicesSection,
   WhyusSection,
-} from "@/components/main/Home";
-import Animate from "@/components/core/Animate";
+} from "../src/components/main/Home";
+import Animate from "../src/components/core/Animate";
 
 export default function Home() {
   return (

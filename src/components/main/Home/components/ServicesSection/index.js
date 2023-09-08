@@ -1,6 +1,6 @@
 import classes from "./services-section.module.css";
-import { Services } from "@/globals/mock";
-import ServiceCard from "@/components/core/ServiceCard";
+import { Services } from "../../../../../globals/mock";
+import ServiceCard from "../../../../core/ServiceCard";
 
 const ServicesSection = (props) => {
   return (

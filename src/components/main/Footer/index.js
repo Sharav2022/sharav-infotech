@@ -4,14 +4,14 @@ import {
   HeaderItems,
   OFFICIAL_MAIL,
   SocialLinks,
-} from "@/globals/mock";
+} from "../../../globals/mock";
 import classes from "./footer.module.css";
-import LogoIcon from "@/assets/icons/logo.svg";
-import DownIcon from "@/assets/icons/chevron-down.svg";
+import LogoIcon from "../../../assets/icons/logo.svg";
+import DownIcon from "../../../assets/icons/chevron-down.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import useIsMobile from "@/components/hooks/useIsMobile";
+import useIsMobile from "../../hooks/useIsMobile";
 const Footer = (props) => {
   const router = useRouter();
 

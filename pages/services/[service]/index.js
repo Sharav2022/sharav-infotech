@@ -1,9 +1,9 @@
-import ServiceCard from "@/components/core/ServiceCard";
+import ServiceCard from "../../../src/components/core/ServiceCard";
 import classes from "./service.module.css";
-import { Services } from "@/globals/mock";
+import { Services } from "../../../src/globals/mock";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Animate from "@/components/core/Animate";
+import Animate from "../../../src/components/core/Animate";
 
 const Service = (props) => {
   const router = useRouter();

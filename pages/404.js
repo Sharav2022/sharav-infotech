@@ -1,8 +1,8 @@
 import classes from "../src/styles/error.module.css";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
-import ErrorImageJson from "@/assets/lottie/error.json";
-import HomeIcon from "@/assets/icons/home.svg";
-import { COPYRIGHT } from "@/globals/mock";
+import ErrorImageJson from "../src/assets/lottie/error.json";
+import HomeIcon from "../src/assets/icons/home.svg";
+import { COPYRIGHT } from "../src/globals/mock";
 import { useRouter } from "next/router";
 const ErrorPage = (props) => {
   const router = useRouter();

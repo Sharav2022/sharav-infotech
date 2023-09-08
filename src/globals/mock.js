@@ -1,15 +1,15 @@
-import CarouselBgImage from "@/assets/images/hero-bg.jpg";
-import LinkedinIcon from "@/assets/icons/linkedin.svg";
-import FacebookIcon from "@/assets/icons/facebook.svg";
-import TwitterIcon from "@/assets/icons/twitter.svg";
-import InstagramIcon from "@/assets/icons/instagram.svg";
+import CarouselBgImage from "../assets/images/hero-bg.jpg";
+import LinkedinIcon from "../assets/icons/linkedin.svg";
+import FacebookIcon from "../assets/icons/facebook.svg";
+import TwitterIcon from "../assets/icons/twitter.svg";
+import InstagramIcon from "../assets/icons/instagram.svg";
 
-import AnalyticsIcon from "@/assets/icons/why-us/analytics.svg";
-import CMSIcon from "@/assets/icons/why-us/cms.svg";
-import RocketIcon from "@/assets/icons/why-us/rocket.svg";
-import MobileAppIcon from "@/assets/icons/why-us/mobile-app.svg";
-import TimerIcon from "@/assets/icons/why-us/timer.svg";
-import WebSearchIcon from "@/assets/icons/why-us/web-search.svg";
+import AnalyticsIcon from "../assets/icons/why-us/analytics.svg";
+import CMSIcon from "../assets/icons/why-us/cms.svg";
+import RocketIcon from "../assets/icons/why-us/rocket.svg";
+import MobileAppIcon from "../assets/icons/why-us/mobile-app.svg";
+import TimerIcon from "../assets/icons/why-us/timer.svg";
+import WebSearchIcon from "../assets/icons/why-us/web-search.svg";
 
 export const Services = [
   {

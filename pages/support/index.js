@@ -1,18 +1,18 @@
 import classes from "./support.module.css";
-import BlackBg from "@/assets/icons/black-bg.svg";
+import BlackBg from "../../src/assets/icons/black-bg.svg";
 import {
   OFFICIAL_MAIL,
   SUPPORT_GET_IN_TOUCH_DESC,
   SUPPORT_GET_IN_TOUCH_TITLE,
   SocialLinks,
-} from "@/globals/mock";
-import PhoneIcon from "@/assets/icons/phone-outgoing.svg";
-import MailIcon from "@/assets/icons/mail.svg";
-import TextField from "@/components/core/TextField";
+} from "../../src/globals/mock";
+import PhoneIcon from "../../src/assets/icons/phone-outgoing.svg";
+import MailIcon from "../../src/assets/icons/mail.svg";
+import TextField from "../../src/components/core/TextField";
 import { useState } from "react";
-import { isEnabled } from "@/lib/common";
+import { isEnabled } from "../../src/lib/common";
 import axios from "axios";
-import Animate from "@/components/core/Animate";
+import Animate from "../../src/components/core/Animate";
 import Head from "next/head";
 
 const SupportPage = () => {
