@@ -401,3 +401,73 @@ export const TEAM = [
   //   ],
   // },
 ];
+
+export const IT_CONSULTING_TITLE = "We Are Consultants";
+export const IT_CONSULTING_HEADING =
+  "Sharav Infotech saves you time by providing experienced IT professionals across all your locations.saves you time and money by providing experienced IT professionals across all your locations.";
+export const IT_CONSULTING_ASPECTS_DESCRIPTION =
+  "IT consultants at  Sharav Infotech work closely with businesses and organizations to offer guidance, expertise, and solutions to their IT-related challenges and needs. Here are some key aspects of our IT consulting:";
+export const IT_CONSULTING_ASPECTS_ENDING =
+  "IT consulting is a diverse field, and Our consultants are specialized in various areas, including Application development and maintenance, data analytics, software development, and more. The ultimate goal of our IT consulting is to help organizations leverage technology to improve their efficiency, competitiveness, and overall success in their respective industries.";
+export const IT_CONSULTING_ASPECTS = [
+  {
+    id: 1,
+    title: "Assessment and Analysis",
+    description:
+      "We begin by assessing the client's current IT infrastructure, processes, and goals. We analyze existing systems, identify issues, and determine areas for improvement.",
+  },
+  {
+    id: 2,
+    title: "Strategic Planning",
+    description:
+      "After assessing the client's needs and goals, Our IT consultants develop a strategic plan that outlines how technology can be used to meet those objectives. This plan may include recommendations for hardware, software, network configurations, security measures, and more.",
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Our IT consultants often play a significant role in implementing the recommended solutions. This may involve setting up new hardware or software, configuring networks, or integrating various systems to work seamlessly.",
+  },
+  {
+    id: 4,
+    title: "Project Management",
+    description:
+      "For larger IT projects, our consultants will manage the entire project, ensuring it stays on schedule and within budget. They coordinate with various stakeholders and vendors to ensure a successful implementation.",
+  },
+  {
+    id: 5,
+    title: "Training and Support",
+    description:
+      "Our IT consultants will provide training to the client's employees to ensure they can effectively use the new technology. They also offer ongoing support and troubleshooting services to address any issues that may arise.",
+  },
+  {
+    id: 6,
+    title: "Security and Compliance",
+    description:
+      "Our IT consultants often focus on ensuring the security of a client's IT systems and ensuring compliance with relevant regulations and standards, such as GDPR, HIPAA, or industry-specific requirements.",
+  },
+  {
+    id: 7,
+    title: "Cost Optimization",
+    description:
+      "Our Consultants help organizations optimize their IT spending by identifying areas where cost savings can be achieved without compromising performance or security.",
+  },
+  {
+    id: 8,
+    title: "Technology Trends",
+    description:
+      "Staying up-to-date with the latest technology trends and innovations is crucial for IT consultants. Our Consultants advise their clients on how emerging technologies can benefit their business.",
+  },
+  {
+    id: 9,
+    title: "Technology Trends",
+    description:
+      "Our IT consultants tailor their recommendations and solutions to meet the specific needs of each client. They consider factors such as the size of the organization, industry, budget constraints, and long-term goals.",
+  },
+  {
+    id: 10,
+    title: "Vendor Selection",
+    description:
+      "When new hardware or software is needed, consultants assist in selecting the right vendors and products based on their client's requirements.",
+  },
+];

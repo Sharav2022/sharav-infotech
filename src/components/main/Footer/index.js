@@ -19,16 +19,18 @@ const Footer = (props) => {
 
   const [showUsefulLinks, setShowUsefulLinks] = useState(false);
   const [showSocialLinks, setShowSocialLinks] = useState(false);
-
+  const [showServicesLink, setShowServicesLink] = useState(false);
   const isTablet = useIsMobile({ breakpoint: 992 });
 
   useEffect(() => {
     if (isTablet) {
       setShowSocialLinks(false);
       setShowUsefulLinks(false);
+      setShowServicesLink(false);
     } else {
       setShowSocialLinks(true);
       setShowUsefulLinks(true);
+      setShowServicesLink(true);
     }
   }, [isTablet]);
 
@@ -62,21 +64,61 @@ const Footer = (props) => {
               {showUsefulLinks && (
                 <div className={classes.items}>
                   {HeaderItems.map((item) => (
-                    <Link
-                      key={item.id}
-                      passHref
-                      href={"/" + item.url}
-                      legacyBehavior
-                    >
-                      <a
-                        className={classes.item}
-                        data-active={
-                          asPath === "/" + item.url ? "true" : undefined
-                        }
+                    <>
+                      <Link
+                        key={item.id}
+                        passHref
+                        href={"/" + item.url}
+                        legacyBehavior
                       >
-                        {item.title}
-                      </a>
-                    </Link>
+                        <a
+                          className={classes.item}
+                          data-active={
+                            asPath === "/" + item.url ? "true" : undefined
+                          }
+                        >
+                          {item.title}
+                          {item.child && (
+                            <div
+                              style={{
+                                transform: showServicesLink
+                                  ? "rotate(180deg)"
+                                  : undefined,
+                                cursor: "pointer",
+                              }}
+                              onClick={() =>
+                                setShowServicesLink((prev) => !prev)
+                              }
+                            >
+                              {isTablet && <DownIcon />}
+                            </div>
+                          )}
+                        </a>
+                      </Link>
+                      {item.child && (
+                        <div className={classes.children}>
+                          {item.child.map((childItem) => (
+                            <Link
+                              key={childItem.id}
+                              passHref
+                              href={"/" + childItem.url}
+                              legacyBehavior
+                            >
+                              <a
+                                className={classes.item}
+                                data-active={
+                                  asPath === "/" + childItem.url
+                                    ? "true"
+                                    : undefined
+                                }
+                              >
+                                {childItem.title}
+                              </a>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
                   ))}
                 </div>
               )}

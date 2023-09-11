@@ -62,6 +62,18 @@
   font-style: normal;
   font-weight: 400;
   opacity: 0.85;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--color-gray-300);
+  padding-left: 1rem;
+  margin: 0.5rem;
+  margin-left: 1rem;
 }
 
 .item[data-active] {
