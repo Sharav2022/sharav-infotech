@@ -15,11 +15,7 @@ const nextConfig = () => {
         use: ["@svgr/webpack"],
       });
       return config;
-    },
-    env: {
-      SENDGRID_API_KEY:
-        "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",
-    },
+    }
   };
 };
 
