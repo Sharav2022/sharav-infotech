@@ -4,6 +4,7 @@ const nextConfig = () => {
   return {
     reactStrictMode: false,
     swcMinify: true,
+    distDir: "build",
     basePath: "",
     images: {
       dangerouslyAllowSVG: true,
@@ -18,7 +19,7 @@ const nextConfig = () => {
     },
     env: {
       SENDGRID_API_KEY:
-        "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",
+        "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",
     },
   };
 };
