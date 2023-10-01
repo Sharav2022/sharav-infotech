@@ -2,16 +2,18 @@ import { sendEmail } from "../../src/lib/mail";
 
 export default async (req, res) => {
   //   const { email } = req.body;
-  console.log("req", req.body);
+  const body = req.body;
   try {
     await sendEmail(
-      "manikgarg06@gmail.com",
-      "Test Email",
-      "",
-      '<strong>and easy to do anywhere, even with Node.js</strong>'
-      // `<div style="display:flex;flex-direction:column;gap:24px">
-      //   <div>First Name : Manik</div>
-      // </div>`
+      "sharavinfotech@gmail.com",
+      "Enquiry :: Sharav Infotech",
+      `
+        First Name : ${body.firstName}
+        Last Name : ${body.lastName}
+        Email : ${body.email}
+        Contact : ${body.phone}
+        Message : ${body.message}
+      `,
     );
     res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
