@@ -25,6 +25,7 @@ const initialState = {
 
 const SupportPage = () => {
   const [formData, setFormData] = useState({ ...initialState });
+  const [isSending, setIsSending] = useState(false);
 
   const changeHandler = (event) => {
     setIsError({ error: false, message: undefined });
@@ -35,7 +36,8 @@ const SupportPage = () => {
   };
 
   const saveHandler = async () => {
-    if (isEnabled) {
+    if (isEnabled || !isSending) {
+      setIsSending(true);
       const res = await axios.post(
         "api/send-mail",
         {
@@ -48,6 +50,7 @@ const SupportPage = () => {
           },
         }
       );
+      setIsSending(false);
       if (res) {
         setIsSuccess(true);
       } else {
@@ -56,7 +59,6 @@ const SupportPage = () => {
           message: "Something went wrong, please try again.",
         });
       }
-      console.log(res);
     }
   };
 
@@ -108,21 +110,21 @@ const SupportPage = () => {
               <div className={classes.git_desc}>
                 {SUPPORT_GET_IN_TOUCH_DESC}
               </div>
+              <div className={classes.social_links}>
+                {SocialLinks.map((_) => (
+                  <div
+                    className={classes.icon + ` icon-${_.selector}`}
+                    onClick={() => socialLinkHandler(_.url)}
+                  >
+                    {_.icon}
+                  </div>
+                ))}
+              </div>
             </div>
             <div className={classes.black_shape}>
               <div className={classes.black_bg}>
                 <BlackBg />
               </div>
-            </div>
-            <div className={classes.social_links}>
-              {SocialLinks.map((_) => (
-                <div
-                  className={classes.icon + ` icon-${_.selector}`}
-                  onClick={() => socialLinkHandler(_.url)}
-                >
-                  {_.icon}
-                </div>
-              ))}
             </div>
           </section>
         </Animate>
@@ -211,7 +213,7 @@ const SupportPage = () => {
             </div>
             <div
               className={
-                classes.contact_btn + ` ${!enabled ? classes.disabled : ""}`
+                classes.contact_btn + ` ${(!enabled || isSending) ? classes.disabled : ""}`
               }
               onClick={saveHandler}
             >

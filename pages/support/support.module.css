@@ -62,9 +62,11 @@
 .social_links {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  bottom: -1.5rem;
+  margin-bottom: -1.5rem;
+  z-index: 1;
   left: calc(50% - 98px);
+  justify-content: center;
+  align-items: center;
 }
 .icon {
   cursor: pointer;

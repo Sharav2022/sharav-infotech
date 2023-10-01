@@ -5,10 +5,9 @@ export const sendEmail = async (to, subject, text, html) => {
 
   const msg = {
     to,
-    from: "neelamr1508@gmail.com",
+    from: "sharavinfotech@gmail.com",
     subject,
-    text,
-    html,
+    text
   };
 
   try {
