@@ -13,7 +13,7 @@ import WebSearchIcon from "../assets/icons/why-us/web-search.svg";
 
 export const Services = [
   {
-    id: 1,
+    id: "product-design",
     mediaUrl: "/images/services/service_1.png",
     title: "Product Design",
     mainDescription:
@@ -26,10 +26,10 @@ export const Services = [
       "Web Design ensures that the website is not only visually appealing but also easy to use and navigate, making it a delightful experience for visitors.",
     ],
     type: "design",
-    url: "services/1",
+    url: "services/product-design",
   },
   {
-    id: 2,
+    id: "web-development",
     mediaUrl: "/images/services/service_2.png",
     title: "Web Development",
     mainDescription:
@@ -42,10 +42,10 @@ export const Services = [
       "We provide you with a peerless and most favorable solution by using the latest and innovative technology and integrating our experience with your vision. We provide you with appropriate training and support after your project is accomplished.",
     ],
     type: "development",
-    url: "services/2",
+    url: "services/web-development",
   },
   {
-    id: 3,
+    id: "software-testing",
     mediaUrl: "/images/services/service_3.png",
     title: "Software Testing",
     mainDescription:
@@ -59,10 +59,10 @@ export const Services = [
       "Accessibility testing access the whole website with compliance with WCAG 2.0 AA, plus educational resources to help you create accessible audio, video, and text files.",
     ],
     type: "testing",
-    url: "services/3",
+    url: "services/software-testing",
   },
   {
-    id: 4,
+    id: "launching-and-support",
     mediaUrl: "/images/services/service-4_1.png",
     title: "Launching and Support",
     mainDescription:
@@ -77,7 +77,7 @@ export const Services = [
       "Updates to system and user documentation as needed. Recommendations on developing and maintaining a dashboard of analytics to measure the site’s effectiveness.",
       "Reports on search engine optimization. System monitoring, notifications, and alerts.",
     ],
-    url: "services/4",
+    url: "services/launching-and-support",
   },
 ];
 
@@ -125,7 +125,7 @@ export const SocialLinks = [
     id: 2,
     title: "LinkedIn",
     selector: "linkedin",
-    url: "https://www.linkedin.com/",
+    url: "https://www.linkedin.com/company/sharavinfotech",
     icon: <LinkedinIcon />,
   },
   {

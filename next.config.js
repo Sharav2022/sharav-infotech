@@ -15,7 +15,19 @@ const nextConfig = () => {
         use: ["@svgr/webpack"],
       });
       return config;
-    }
+    },
+    async rewrites() {
+      return [
+        {
+          source: "/robots.txt",
+          destination: `/api/robots?secret=sharav_infotech`,
+        },
+        {
+          source: "/sitemap.xml",
+          destination: "/api/sitemap?secret=sharav_infotech",
+        },
+      ];
+    },
   };
 };
 
