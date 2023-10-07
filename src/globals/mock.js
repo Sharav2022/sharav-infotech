@@ -354,29 +354,29 @@ export const TEAM = [
       },
     ],
   },
-  // {
-  //   id: 2,
-  //   mediaUrl: "/images/team/team_member.jpeg",
-  //   name: "Shaveta Garg",
-  //   position: "Founder",
-  //   socialLinks: [
-  //     {
-  //       id: 1,
-  //       type: "linkedin",
-  //       url: "https://www.linkedin.com/in/shaveta-garg",
-  //     },
-  //     {
-  //       id: 2,
-  //       type: "facebook",
-  //       url: "https://www.facebook.com",
-  //     },
-  //     {
-  //       id: 3,
-  //       type: "twitter",
-  //       url: "https://twitter.com/",
-  //     },
-  //   ],
-  // },
+  {
+    id: 2,
+    mediaUrl: "/images/team/team_member.jpeg",
+    name: "Shaveta Garg",
+    position: "Full Stack Developer",
+    socialLinks: [
+      {
+        id: 1,
+        type: "linkedin",
+        url: "https://www.linkedin.com/in/shaveta-garg",
+      },
+      {
+        id: 2,
+        type: "facebook",
+        url: "https://www.facebook.com",
+      },
+      {
+        id: 3,
+        type: "twitter",
+        url: "https://twitter.com/",
+      },
+    ],
+  },
   // {
   //   id: 3,
   //   mediaUrl: "/images/team/team_member.jpeg",
