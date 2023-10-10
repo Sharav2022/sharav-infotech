@@ -356,24 +356,19 @@ export const TEAM = [
   },
   {
     id: 2,
-    mediaUrl: "/images/team/team_member.jpeg",
-    name: "Shaveta Garg",
-    position: "Full Stack Developer",
+    mediaUrl: "/images/team/RomaRoyPic.jpg",
+    name: "Ruma Roy",
+    position: "Senior Manager",
     socialLinks: [
       {
         id: 1,
         type: "linkedin",
-        url: "https://www.linkedin.com/in/shaveta-garg",
+        url: "https://www.linkedin.com",
       },
       {
         id: 2,
         type: "facebook",
         url: "https://www.facebook.com",
-      },
-      {
-        id: 3,
-        type: "twitter",
-        url: "https://twitter.com/",
       },
     ],
   },
