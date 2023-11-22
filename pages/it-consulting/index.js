@@ -25,6 +25,7 @@ const ITConsultingPage = () => {
           content="SharavInfotech offers fully managed IT Services to low end business."
         />
         <link rel="icon" href={`icons/logo.svg`} />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></link>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className={classes.container}>
