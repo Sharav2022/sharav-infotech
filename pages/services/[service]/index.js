@@ -4,6 +4,7 @@ import { Services } from "../../../src/globals/mock";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Animate from "../../../src/components/core/Animate";
+import Head from "next/head";
 
 const Service = (props) => {
   const router = useRouter();
@@ -21,7 +22,18 @@ const Service = (props) => {
   }, [router]);
 
   return (
-    service && (
+    service && 
+    <>
+        <Head>
+        <title>SharavInfotech - Emerging Leader of IT Services</title>
+        <meta
+          name="description"
+          content="SharavInfotech offers fully managed IT Services to low end business."
+        />
+        <link rel="icon" href={`icons/logo.svg`} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+    (
       <div className={classes.container}>
         <Animate>
           <div className={classes.bg}>
@@ -49,6 +61,7 @@ const Service = (props) => {
         )}
       </div>
     )
+    </>
   );
 };
 

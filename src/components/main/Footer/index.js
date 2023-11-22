@@ -156,21 +156,24 @@ const Footer = (props) => {
                 <div>Contact Us</div>
               </div>
               <div className={classes.items}>
-                <a href="#" className={classes.item}>
-                      <i class="bx bx-map"></i>
-                      2600 Skymark Ave, Unit 9, Suite 104, Mississauga , ON Canada L4W 5B2
+                <a
+                  href="https://maps.app.goo.gl/tWt9o1T1nW3moDvY9"
+                  target="_blank"
+                  className={classes.item}
+                >
+                  <i className="bx bx-map"></i>
+                  2600 Skymark Ave, Unit 9, Suite 104, Mississauga , ON Canada
+                  L4W 5B2
                 </a>
                 <a href="tel:6475646789" className={classes.item}>
-                      <i class="bx bx-phone-call"></i>
-                      (647)&nbsp;564-6789
-                    </a>
-                <a href={`mailto:${OFFICIAL_MAIL}`} className={classes.item}>
-                  <i class="bx bx-envelope"></i>
-                  { OFFICIAL_MAIL}
+                  <i className="bx bx-phone-call"></i>
+                  (647)&nbsp;564-6789
                 </a>
-             
+                <a href={`mailto:${OFFICIAL_MAIL}`} className={classes.item}>
+                  <i className="bx bx-envelope"></i>
+                  {OFFICIAL_MAIL}
+                </a>
               </div>
-             
             </div>
           </div>
         </div>
