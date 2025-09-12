@@ -29,6 +29,22 @@ export const Services = [
     url: "services/product-design",
   },
   {
+    id: "digital-marketing",
+    mediaUrl: "/images/services/service_1.png",
+    title: "Digital Marketing",
+    mainDescription:
+      "Product design involves the design of mobile apps, web applications, IoT devices, desktop applications, and more. The purpose of product design is to create a digital tool that supports users in accomplishing their goals.",
+    description:
+      "Design is the art of creating and building visually appealing and user-friendly websites/applications that help businesses establish a strong online presence. It involves the process of planning, designing, and implementing elements such as layout, colors, graphics, and content to create a website that not only looks impressive but also delivers an exceptional user experience.",
+    solutions: [
+      "Design services come together with a range of expert solutions geared towards crafting websites that effectively represent a company's brand, products, and services.",
+      "It includes everything from designing the website's layout and navigation to choosing color schemes, fonts, and images that resonate with the target audience. ",
+      "Web Design ensures that the website is not only visually appealing but also easy to use and navigate, making it a delightful experience for visitors.",
+    ],
+    type: "design",
+    url: "services/digital-marketing",
+  },
+  {
     id: "web-development",
     mediaUrl: "/images/services/service_2.png",
     title: "Web Development",
