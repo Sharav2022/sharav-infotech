@@ -30,19 +30,39 @@ export const Services = [
   },
   {
     id: "digital-marketing",
-    mediaUrl: "/images/services/service_1.png",
+    mediaUrl: "/images/services/digital_marketing.jpg",
     title: "Digital Marketing",
     mainDescription:
-      "Product design involves the design of mobile apps, web applications, IoT devices, desktop applications, and more. The purpose of product design is to create a digital tool that supports users in accomplishing their goals.",
+      "Digital Marketing helps businesses reach their target audience, build brand awareness, and drive sales using online strategies and channels such as SEO, social media, email, paid ads, and content marketing.",
     description:
-      "Design is the art of creating and building visually appealing and user-friendly websites/applications that help businesses establish a strong online presence. It involves the process of planning, designing, and implementing elements such as layout, colors, graphics, and content to create a website that not only looks impressive but also delivers an exceptional user experience.",
+      "Our Digital Marketing services are designed to boost your online presence, attract the right audience, and convert visitors into loyal customers. From optimizing websites for search engines to running paid campaigns, managing social media, and creating impactful content, we provide end-to-end solutions that help businesses stay ahead in the digital space.",
     solutions: [
-      "Design services come together with a range of expert solutions geared towards crafting websites that effectively represent a company's brand, products, and services.",
-      "It includes everything from designing the website's layout and navigation to choosing color schemes, fonts, and images that resonate with the target audience. ",
-      "Web Design ensures that the website is not only visually appealing but also easy to use and navigate, making it a delightful experience for visitors.",
+      "Search Engine Optimization (SEO) to increase website visibility on Google and other search engines.",
+      "Social Media Marketing (SMM) to engage audiences and grow brand loyalty across platforms like Facebook, Instagram, and LinkedIn.",
+      "Pay-Per-Click (PPC) advertising campaigns to drive instant traffic and leads.",
+      "Email Marketing strategies to nurture leads and retain customers.",
+      "Content Marketing to establish authority and connect with your target audience through blogs, videos, and infographics.",
     ],
-    type: "design",
+    type: "marketing",
     url: "services/digital-marketing",
+  },
+  {
+    id: "cloud-services",
+    mediaUrl: "/images/services/cloud_service.jpg",
+    title: "Cloud Services",
+    mainDescription:
+      "Cloud Services provide scalable, secure, and flexible IT solutions that enable businesses to store, manage, and access data and applications from anywhere, anytime.",
+    description:
+      "Our Cloud Services help organizations modernize their IT infrastructure, reduce costs, and improve efficiency by leveraging cloud platforms such as AWS, Microsoft Azure, and Google Cloud. We assist with cloud migration, deployment, security, and management, ensuring businesses get the most out of their cloud investment.",
+    solutions: [
+      "Cloud Migration services to securely move your applications and data to the cloud.",
+      "Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) for scalable and reliable IT environments.",
+      "Cloud Security solutions to protect your business data and applications.",
+      "Disaster Recovery and Backup solutions to ensure business continuity.",
+      "Managed Cloud Services for monitoring, maintenance, and optimization of cloud resources.",
+    ],
+    type: "technology",
+    url: "services/cloud-services",
   },
   {
     id: "web-development",
