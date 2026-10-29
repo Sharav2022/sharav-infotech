@@ -1,0 +1,165 @@
+/*
+ * Sharav Infotech design tokens.
+ * Primitive values are defined once; components consume only the semantic
+ * tokens further down. See docs/DESIGN_SYSTEM.md for usage rules.
+ */
+
+:root {
+  /* ---------- Primitive palette ---------- */
+  /* Ink: technical navy foundations */
+  --ink-1000: #050810;
+  --ink-950: #080c18;
+  --ink-900: #0c1222;
+  --ink-850: #111933;
+  --ink-800: #18213d;
+  --ink-700: #243050;
+
+  /* Graphite: supporting neutrals */
+  --graphite-600: #4b5468;
+  --graphite-500: #5e677c;
+  --graphite-400: #8d95a8;
+  --graphite-300: #b7bdcb;
+  --graphite-200: #d9dde6;
+  --graphite-100: #e9ecf2;
+
+  /* Paper: cool whites */
+  --paper-50: #f5f7fa;
+  --paper-0: #ffffff;
+
+  /* Sharav Indigo: refined from the original logo blue (#4a4ff0) */
+  --indigo-700: #2f33a8;
+  --indigo-600: #3b3fd0;
+  --indigo-500: #4b50e6;
+  --indigo-400: #7378f0;
+  --indigo-300: #a3a6f6;
+  --indigo-100: #e6e7fd;
+
+  /* Signal: a restrained cool accent for live states and annotations */
+  --signal-500: #2fc8a8;
+  --signal-400: #5fdcc0;
+  --signal-100: #dcf7f0;
+
+  --danger-500: #d64545;
+  --danger-100: #fbe7e7;
+  --success-500: #1f9d78;
+  --success-100: #ddf5ec;
+
+  /* ---------- Semantic: surfaces ---------- */
+  --surface-page: var(--paper-50);
+  --surface-raised: var(--paper-0);
+  --surface-sunken: var(--graphite-100);
+  --surface-inverse: var(--ink-950);
+  --surface-inverse-raised: var(--ink-900);
+  --surface-inverse-strong: var(--ink-850);
+
+  /* ---------- Semantic: text ---------- */
+  --text-strong: var(--ink-950);
+  --text-body: #2c3446;
+  --text-muted: var(--graphite-500);
+  --text-inverse-strong: #f4f6fb;
+  --text-inverse-body: #c3c9d8;
+  --text-inverse-muted: #8590a8;
+  --text-accent: var(--indigo-600);
+  --text-inverse-accent: var(--indigo-300);
+
+  /* ---------- Semantic: lines ---------- */
+  --border-subtle: rgba(12, 18, 34, 0.08);
+  --border-default: rgba(12, 18, 34, 0.14);
+  --border-strong: rgba(12, 18, 34, 0.32);
+  --border-inverse-subtle: rgba(255, 255, 255, 0.07);
+  --border-inverse-default: rgba(255, 255, 255, 0.14);
+  --grid-line: rgba(12, 18, 34, 0.05);
+  --grid-line-inverse: rgba(163, 166, 246, 0.07);
+
+  /* ---------- Semantic: interaction ---------- */
+  --action-primary: var(--indigo-500);
+  --action-primary-hover: var(--indigo-600);
+  --action-primary-text: #ffffff;
+  --focus-ring: 0 0 0 2px var(--surface-page), 0 0 0 4px var(--indigo-500);
+  --focus-ring-inverse: 0 0 0 2px var(--ink-950), 0 0 0 4px var(--signal-400);
+
+  /* ---------- Typography ---------- */
+  --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
+  --font-body: var(--font-plex-sans), system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo,
+    monospace;
+
+  /* Fluid type scale: min at 360px viewport, max at 1440px */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: clamp(1.0625rem, 1.02rem + 0.19vw, 1.1875rem);
+  --text-lg: clamp(1.1875rem, 1.1rem + 0.37vw, 1.4375rem);
+  --text-xl: clamp(1.4375rem, 1.27rem + 0.74vw, 1.9375rem);
+  --text-2xl: clamp(1.75rem, 1.46rem + 1.3vw, 2.625rem);
+  --text-3xl: clamp(2.125rem, 1.6rem + 2.3vw, 3.75rem);
+  --text-4xl: clamp(2.5rem, 1.7rem + 3.6vw, 5rem);
+
+  --leading-tight: 1.04;
+  --leading-snug: 1.2;
+  --leading-body: 1.62;
+  --tracking-display: -0.025em;
+  --tracking-label: 0.12em;
+  --display-width: 112; /* Archivo wdth axis: semi-expanded */
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-section: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --gutter: clamp(1rem, 0.6rem + 1.8vw, 2.5rem);
+
+  /* ---------- Layout ---------- */
+  --width-prose: 40rem;
+  --width-content: 76rem;
+  --width-wide: 88rem;
+  --header-height: 4.5rem;
+
+  /* Breakpoints (reference only: CSS custom properties cannot be used in
+     media queries). sm 640 · md 768 · lg 1024 · xl 1280 */
+
+  /* ---------- Radii ---------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* ---------- Elevation ---------- */
+  --shadow-1: 0 1px 2px rgba(8, 12, 24, 0.06), 0 1px 1px rgba(8, 12, 24, 0.04);
+  --shadow-2: 0 4px 12px -2px rgba(8, 12, 24, 0.08),
+    0 2px 4px rgba(8, 12, 24, 0.04);
+  --shadow-3: 0 24px 48px -16px rgba(8, 12, 24, 0.22),
+    0 8px 16px -8px rgba(8, 12, 24, 0.1);
+
+  /* ---------- Motion ---------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 140ms;
+  --duration-base: 240ms;
+  --duration-slow: 520ms;
+  --duration-reveal: 760ms;
+
+  /* ---------- Layers ---------- */
+  --z-header: 50;
+  --z-overlay: 80;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-reveal: 0ms;
+  }
+}

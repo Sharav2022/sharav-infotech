@@ -1,0 +1,11 @@
+{
+  "name": "Sharav Infotech",
+  "short_name": "Sharav",
+  "icons": [
+    { "src": "/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#080c18",
+  "background_color": "#080c18",
+  "display": "browser"
+}

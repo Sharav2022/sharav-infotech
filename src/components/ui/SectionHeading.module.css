@@ -1,0 +1,29 @@
+.heading {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 52rem;
+}
+
+.center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.index {
+  color: var(--text-accent);
+  margin-right: var(--space-3);
+}
+
+.index::before {
+  content: "§ ";
+}
+
+.title {
+  font-size: var(--text-3xl);
+  line-height: 1.06;
+}
+
+.lede {
+  color: var(--text-muted);
+}

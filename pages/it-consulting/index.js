@@ -1,76 +1,81 @@
-import Head from "next/head";
-import Animate from "../../src/components/core/Animate";
-import {
-  IT_CONSULTING_ASPECTS,
-  IT_CONSULTING_ASPECTS_DESCRIPTION,
-  IT_CONSULTING_HEADING,
-  IT_CONSULTING_TITLE,
-} from "../../src/globals/mock";
-import classes from "./it-consulting.module.css";
-import { useRouter } from "next/router";
-const ITConsultingPage = () => {
-  const router = useRouter();
+import CtaBand from "../../src/components/layout/CtaBand";
+import PageHero from "../../src/components/layout/PageHero";
+import Seo from "../../src/components/layout/Seo";
+import Reveal from "../../src/components/ui/Reveal";
+import SectionHeading from "../../src/components/ui/SectionHeading";
+import { CONSULTING } from "../../src/content/company";
+import pageClasses from "../../src/styles/Pages.module.css";
+import classes from "../../src/styles/Consulting.module.css";
 
-  const navigateToContactUs = () => {
-    console.log('called')
-    router.push("support");
-  };
+// Aspects are numbered continuously across phases (01–10).
+const PHASE_OFFSETS = CONSULTING.phases.map((_, index) =>
+  CONSULTING.phases.slice(0, index).reduce((sum, phase) => sum + phase.aspects.length, 0)
+);
 
+export default function ITConsultingPage() {
   return (
     <>
-      <Head>
-        <title>SharavInfotech - {IT_CONSULTING_TITLE}</title>
-        <meta
-          name="description"
-          content="SharavInfotech offers fully managed IT Services to low end business."
-        />
-        <link rel="icon" href={`icons/logo.svg`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <div className={classes.container}>
-        <Animate>
-          <div className={classes.bg}>
-            <div className={"container " + classes.tc}>
-              <h1 className={classes.title}>{IT_CONSULTING_TITLE}</h1>
-              <div className={classes.description}>{IT_CONSULTING_HEADING}</div>
-            </div>
-          </div>
-        </Animate>
-        <div className={"container"}>
-          <h1 className={classes.aspects_title}>{"Our Key Aspects"}</h1>
-          <div className={classes.aspects_description}>
-            {IT_CONSULTING_ASPECTS_DESCRIPTION}
-          </div>
-          <div className={classes.how_we_work}>
-            {IT_CONSULTING_ASPECTS.map((item, index) => (
-              <Animate>
-                <div className={classes.hwa_item}>
-                  <div className={classes.hwa_sr}>
-                    <span>0</span>
-                    <span>{item.id}</span>
-                  </div>
-                  <div className={classes.hwa_title}>{item.title}</div>
-                  <div className={classes.hwa_desc}>{item.description}</div>
+      <Seo
+        title="IT Consulting"
+        path="/it-consulting"
+        description="IT consulting from Sharav Infotech: assessment, strategic planning, vendor selection, implementation, project management, security and ongoing support."
+      />
+      <PageHero
+        label="IT Consulting"
+        title={CONSULTING.title}
+        lede={CONSULTING.lede}
+        trail={[{ label: "Services", href: "/services" }]}
+      />
+
+      <section className="section" aria-labelledby="consulting-intro">
+        <div className={`container ${pageClasses.split}`}>
+          <SectionHeading
+            label="Our role"
+            id="consulting-intro"
+            title="Independent guidance, followed through to delivery."
+          />
+          <Reveal className={pageClasses.prose}>
+            <p>{CONSULTING.intro}</p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className={`section ${pageClasses.raised}`} aria-labelledby="aspects-title">
+        <div className="container">
+          <SectionHeading
+            label="Key aspects"
+            id="aspects-title"
+            title="Ten areas of consulting work, organized by phase."
+          />
+          <div className={classes.phases}>
+            {CONSULTING.phases.map((phase, phaseIndex) => (
+              <Reveal key={phase.id} className={classes.phase} delay={phaseIndex * 80}>
+                <div className={classes.phaseHead}>
+                  <span className={classes.phaseIndex}>Phase {phaseIndex + 1}</span>
+                  <h3>{phase.label}</h3>
                 </div>
-              </Animate>
+                <ul role="list" className={classes.aspects}>
+                  {phase.aspects.map((aspect, index) => (
+                    <li key={aspect.title}>
+                      <span className={classes.aspectIndex}>
+                        {String(PHASE_OFFSETS[phaseIndex] + index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h4>{aspect.title}</h4>
+                        <p>{aspect.body}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             ))}
           </div>
         </div>
-        <div className={classes.bg_img}>
-          <div className={classes.contact_us_c}>
-            <div className={classes.description}>
-              We can help you grow where you want. Let’s talk about how digital
-              can work for your business.
-            </div>
-            <div className={classes.btn} onClick={navigateToContactUs}>
-              Contact us
-            </div>
-          </div>
-          <span className={classes.gradient}></span>
-        </div>
-      </div>
+      </section>
+
+      <CtaBand title="We can help you decide where technology should take you next." />
     </>
   );
-};
+}
 
-export default ITConsultingPage;
+ITConsultingPage.layoutProps = { headerTone: "inverse" };

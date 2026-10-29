@@ -1,0 +1,160 @@
+.explorer {
+  display: grid;
+  gap: var(--space-10);
+}
+
+/* ---------- Track ---------- */
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.rail {
+  position: absolute;
+  left: calc(100% / 12);
+  right: calc(100% / 12);
+  top: 7px;
+  height: 1px;
+  background: var(--border-default);
+}
+
+.railFill {
+  position: absolute;
+  inset: 0;
+  background: var(--indigo-400);
+  transform-origin: left;
+  transform: scaleX(var(--progress));
+  transition: transform var(--duration-slow) var(--ease-emphasis);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  padding: 0 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  text-align: center;
+  border-radius: var(--radius-sm);
+}
+
+.node {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-page);
+  transition: background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+
+.step[data-complete] .node {
+  border-color: var(--indigo-400);
+  background: var(--indigo-500);
+}
+
+.step[aria-selected="true"] .node {
+  background: var(--signal-400);
+  border-color: var(--signal-400);
+  box-shadow: 0 0 0 5px rgba(95, 220, 192, 0.16);
+}
+
+.stepIndex {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  margin-top: var(--space-2);
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" var(--display-width);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: -0.01em;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.step:hover .stepTitle,
+.step[aria-selected="true"] .stepTitle {
+  color: var(--text-strong);
+}
+
+/* ---------- Panel ---------- */
+.panel {
+  display: grid;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  animation: panelIn var(--duration-slow) var(--ease-emphasis);
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.panelHead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+}
+
+.bigIndex {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  color: var(--indigo-400);
+  line-height: 1;
+}
+
+.panelTitle {
+  font-size: var(--text-2xl);
+}
+
+.details {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.details dd {
+  margin-top: var(--space-2);
+  color: var(--text-body);
+}
+
+.output {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--signal-400) !important;
+}
+
+/* Narrow screens: the track shows indices only; the panel names the stage. */
+@media (max-width: 639px) {
+  .stepTitle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .step[aria-selected="true"] .stepIndex {
+    color: var(--text-strong);
+  }
+}
+
+@media (min-width: 768px) {
+  .details {
+    grid-template-columns: 1.2fr 1fr 0.8fr;
+    gap: var(--space-10);
+  }
+  .panel {
+    padding: var(--space-10) var(--space-12);
+  }
+}

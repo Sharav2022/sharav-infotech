@@ -1,0 +1,67 @@
+.phases {
+  margin-top: var(--space-16);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.phase {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--surface-page);
+}
+
+.phaseHead {
+  display: grid;
+  gap: var(--space-1);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.phaseHead h3 {
+  font-size: var(--text-2xl);
+}
+
+.phaseIndex {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+.aspects {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.aspects li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--space-3);
+}
+
+.aspects h4 {
+  font-size: var(--text-md);
+  margin-bottom: var(--space-1);
+}
+
+.aspects p {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.aspectIndex {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  padding-top: 0.3em;
+}
+
+@media (min-width: 768px) {
+  .phases {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

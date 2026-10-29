@@ -1,34 +1,57 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = () => {
-  return {
-    reactStrictMode: false,
-    swcMinify: true,
-    basePath: "",
-    images: {
-      dangerouslyAllowSVG: true,
-      contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    },
-    webpack: (config) => {
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: ["@svgr/webpack"],
-      });
-      return config;
-    },
-    async rewrites() {
-      return [
-        {
-          source: "/robots.txt",
-          destination: `/api/robots?secret=sharav_infotech`,
-        },
-        {
-          source: "/sitemap.xml",
-          destination: "/api/sitemap?secret=sharav_infotech",
-        },
-      ];
-    },
-  };
-};
+const isDev = process.env.NODE_ENV !== "production";
 
-module.exports = nextConfig();
+// Next.js (Pages Router) injects inline bootstrap scripts, so 'unsafe-inline'
+// is required for script-src until nonces are introduced via middleware.
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+].join("; ");
+
+const securityHeaders = [
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains",
+  },
+];
+
+module.exports = {
+  reactStrictMode: true,
+  poweredByHeader: false,
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
+  },
+  async redirects() {
+    return [
+      // The former "Support" page was the contact form; it now lives at /contact.
+      { source: "/support", destination: "/contact", permanent: true },
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/about", destination: "/about-us", permanent: true },
+      {
+        source: "/services/it-consulting",
+        destination: "/it-consulting",
+        permanent: true,
+      },
+    ];
+  },
+};

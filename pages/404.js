@@ -1,48 +1,44 @@
-import classes from "../src/styles/error.module.css";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
-import ErrorImageJson from "../src/assets/lottie/error.json";
-import HomeIcon from "../src/assets/icons/home.svg";
-import { COPYRIGHT } from "../src/globals/mock";
-import { useRouter } from "next/router";
-const ErrorPage = (props) => {
-  const router = useRouter();
+import Link from "next/link";
+import Seo from "../src/components/layout/Seo";
+import Button from "../src/components/ui/Button";
+import { SERVICES, serviceHref } from "../src/content/services";
+import classes from "../src/styles/NotFound.module.css";
 
-  const homeHandler = () => {
-    router.replace("/");
-  };
-
+export default function NotFoundPage() {
   return (
-    <section className={classes.bg}>
-      <div className={classes.container}>
-        <div className={classes.image}>
-          <Player autoplay loop src={ErrorImageJson}>
-            <Controls
-              visible={false}
-              buttons={["play", "repeat", "frame", "debug"]}
-            />
-          </Player>
-        </div>
-        <div className={classes.txt_container}>
-          <h1 className={classes.title}>Error 404</h1>
-          <div className={classes.description}>
-            The page you are looking for was moved, removed or might never
-            existed.
+    <>
+      <Seo title="Page not found" path="/404" noindex />
+      <section className={`theme-inverse ${classes.page}`}>
+        <div className={`blueprint-grid ${classes.grid}`} aria-hidden="true" />
+        <div className={`container ${classes.inner}`}>
+          <p className={classes.code}>
+            <span>HTTP</span> 404
+          </p>
+          <h1 className={classes.title}>This route does not resolve.</h1>
+          <p className="lede">
+            The page may have moved during our site update, or the address may
+            be mistyped.
+          </p>
+          <div className={classes.actions}>
+            <Button href="/">Back to home</Button>
+            <Button href="/contact" variant="secondary">
+              Contact us
+            </Button>
           </div>
-          <div className={classes.btn} onClick={homeHandler}>
-            <HomeIcon />
-            <div>Go to home page</div>
-          </div>
+          <nav aria-label="Services" className={classes.links}>
+            <p className="label">Or explore a service</p>
+            <ul role="list">
+              {SERVICES.map((service) => (
+                <li key={service.slug}>
+                  <Link href={serviceHref(service)}>{service.navTitle}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-      </div>
-      <div className={classes.copyright}>{COPYRIGHT}</div>
-    </section>
+      </section>
+    </>
   );
-};
+}
 
-ErrorPage.getLayoutProps = () => {
-  return {
-    hideFooter: true,
-  };
-};
-
-export default ErrorPage;
+NotFoundPage.layoutProps = { headerTone: "inverse", hideFooter: true };

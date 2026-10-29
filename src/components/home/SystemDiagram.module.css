@@ -1,0 +1,218 @@
+.frame {
+  position: relative;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(17, 25, 51, 0.82), rgba(8, 12, 24, 0.92));
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--graphite-500);
+}
+
+.status[data-live]::before {
+  background: var(--signal-400);
+  box-shadow: 0 0 0 3px rgba(95, 220, 192, 0.18);
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  padding: var(--space-2) var(--space-3) 0;
+}
+
+.gridDot {
+  fill: rgba(163, 166, 246, 0.12);
+}
+
+/* ---------- Boundary ---------- */
+.boundary rect {
+  fill: rgba(75, 80, 230, 0.03);
+  stroke: rgba(163, 166, 246, 0.22);
+  stroke-dasharray: 4 6;
+  transition: stroke var(--duration-slow) var(--ease-standard),
+    fill var(--duration-slow) var(--ease-standard);
+}
+
+.boundary[data-active] rect {
+  stroke: rgba(163, 166, 246, 0.5);
+  fill: rgba(75, 80, 230, 0.07);
+}
+
+.boundaryLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  fill: var(--text-inverse-muted);
+}
+
+/* ---------- Edges ---------- */
+.edge {
+  fill: none;
+  stroke: rgba(163, 166, 246, 0.2);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 5;
+  transition: stroke var(--duration-slow) var(--ease-standard);
+}
+
+.edge[data-active] {
+  stroke: var(--indigo-400);
+  stroke-dasharray: none;
+}
+
+.packet {
+  fill: var(--signal-400);
+  filter: drop-shadow(0 0 4px rgba(95, 220, 192, 0.7));
+}
+
+/* ---------- Nodes ---------- */
+.node rect {
+  fill: var(--ink-900);
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1;
+  transition: stroke var(--duration-slow) var(--ease-standard),
+    fill var(--duration-slow) var(--ease-standard);
+}
+
+.node[data-active] rect {
+  fill: var(--ink-800);
+  stroke: var(--indigo-400);
+}
+
+.kind {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  fill: var(--text-inverse-muted);
+  transition: fill var(--duration-slow) var(--ease-standard);
+}
+
+.node[data-active] .kind {
+  fill: var(--signal-400);
+}
+
+.nodeLabel {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  fill: var(--text-inverse-body);
+  transition: fill var(--duration-slow) var(--ease-standard);
+}
+
+.node[data-active] .nodeLabel {
+  fill: #fff;
+}
+
+.indicator {
+  fill: rgba(255, 255, 255, 0.12);
+  transition: fill var(--duration-slow) var(--ease-standard);
+}
+
+.node[data-active] .indicator {
+  fill: var(--signal-400);
+}
+
+/* ---------- Inspector ---------- */
+.inspector {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  overflow: hidden;
+  transition: color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.tab:hover {
+  color: var(--text-strong);
+}
+
+.tab[aria-selected="true"] {
+  color: var(--text-strong);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-subtle);
+}
+
+.tabIndex {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--signal-400);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--indigo-400);
+  transform-origin: left;
+  animation: progress linear forwards;
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.caption {
+  min-height: 3.2em;
+  font-size: var(--text-sm);
+  color: var(--text-body);
+}

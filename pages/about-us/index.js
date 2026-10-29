@@ -1,165 +1,111 @@
-import {
-  ABOUT_US_TITLE,
-  ABOUT_US_WHO_WE_ARE,
-  HOW_WE_ARE,
-  JOB_OPENING,
-  TEAM,
-  TESTIMONIALS,
-} from "../../src/globals/mock";
-import classes from "./about-us.module.css";
-import Animate from "../../src/components/core/Animate";
-import Head from "next/head";
-import ClutchLogo from "../../src/assets/icons/clutch_logo.svg";
-import FullStarIcon from "../../src/assets/icons/fullstar.svg";
-import QuoteIcon from "../../src/assets/icons/quote.svg";
-import LeftArrowIcon from "../../src/assets/icons/left-arrow-white-lg.svg";
-import RightArrowIcon from "../../src/assets/icons/right-arrow-white-lg.svg";
-import { useState } from "react";
-import ServiceCard from "../../src/components/core/ServiceCard";
-import TeamMemberCard from "../../src/components/core/TeamMemberCard";
-const AboutUsPage = () => {
-  const [activeTestimony, setActiveTestimony] = useState(0);
+import Image from "next/image";
+import CtaBand from "../../src/components/layout/CtaBand";
+import PageHero from "../../src/components/layout/PageHero";
+import Seo from "../../src/components/layout/Seo";
+import Button from "../../src/components/ui/Button";
+import Icon from "../../src/components/ui/Icon";
+import Reveal from "../../src/components/ui/Reveal";
+import SectionHeading from "../../src/components/ui/SectionHeading";
+import { ABOUT, CAREERS, TEAM } from "../../src/content/company";
+import { SITE } from "../../src/content/site";
+import pageClasses from "../../src/styles/Pages.module.css";
+import classes from "../../src/styles/About.module.css";
 
-  const testimonyHandler = (position) => {
-    if (position === "next") {
-      setActiveTestimony((currentState) => {
-        if (currentState === TESTIMONIALS.length - 1) {
-          return 0;
-        } else {
-          return currentState + 1;
-        }
-      });
-    } else if (position === "prev") {
-      setActiveTestimony((currentState) => {
-        if (currentState === 0) {
-          return TESTIMONIALS.length - 1;
-        } else {
-          return currentState - 1;
-        }
-      });
-    }
-  };
-
-  const [leftHovered, setLeftHovered] = useState();
-  const [rightHovered, setRightHovered] = useState();
-
+export default function AboutPage() {
   return (
     <>
-      <Head>
-        <title>SharavInfotech - Emerging Leader of IT Services</title>
-        <meta
-          name="description"
-          content="SharavInfotech offers fully managed IT Services to low end business."
-        />
-        <link rel="icon" href={`icons/logo.svg`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <div className={classes.container}>
-        <Animate>
-          <div className={classes.bg_img}>
-            <span className={classes.gradient}></span>
-          </div>
-        </Animate>
-        <Animate>
-          <div className={"container"}>
-            <h1 className={classes.title}>{ABOUT_US_TITLE}</h1>
-            <div className={classes.who_we_are}>
-              <p className={classes.wwa_l}>{ABOUT_US_WHO_WE_ARE[0]}</p>
-              <p className={classes.wwa_r}>{ABOUT_US_WHO_WE_ARE[1]}</p>
-            </div>
-          </div>
-        </Animate>
-        <Animate>
-          <div className={"container"}>
-            <h1 className={classes.title}>{"How we work"}</h1>
-            <div className={classes.how_we_work}>
-              {HOW_WE_ARE.map((item, index) => (
-                <div className={classes.hwa_item}>
-                  <div className={classes.hwa_sr}>
-                    <span>0</span>
-                    <span>{item.id}</span>
-                  </div>
-                  <div className={classes.hwa_title}>{item.title}</div>
-                  <div className={classes.hwa_desc}>{item.description}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Animate>
-        <Animate>
-          <div className={"container"}>
-            <div className={classes.testimonial_container}>
-              <div className={classes.clutch_o_card}>
-                <h3 className={classes.tc_count}>40+</h3>
-                <h2 className={classes.tc_served}>Clients Already Served</h2>
-                <div className={classes.clutch_c}>
-                  <div className={classes.cc_l}>
-                    <div>Reviewed on</div>
-                    <ClutchLogo />
-                  </div>
-                  <div className={classes.cc_r}>
-                    <div className={classes.stars}>
-                      {[...Array(5).keys()].map((_) => (
-                        <FullStarIcon />
-                      ))}
-                    </div>
-                    <div>20 reviews</div>
-                  </div>
-                </div>
-              </div>
-              <div className={classes.testimonial_card}>
-                <div className={classes.tc_c}>
-                  <div className={classes.quote_icon}>
-                    <QuoteIcon />
-                  </div>
-                  <div className={classes.nav_icons}>
-                    <div
-                      onClick={() => testimonyHandler("prev")}
-                      onMouseOver={() => setLeftHovered(true)}
-                      onMouseLeave={() => setLeftHovered(false)}
-                      className={leftHovered ? classes.stroke_white : undefined}
-                    >
-                      <LeftArrowIcon />
-                    </div>
-                    <div
-                      onClick={() => testimonyHandler("next")}
-                      onMouseOver={() => setRightHovered(true)}
-                      onMouseLeave={() => setRightHovered(false)}
-                      className={
-                        rightHovered ? classes.stroke_white : undefined
-                      }
-                    >
-                      <RightArrowIcon />
-                    </div>
-                  </div>
-                </div>
-                <div className={classes.testimony}>
-                  <div>{TESTIMONIALS[activeTestimony].testimony}</div>
-                  <h5>{TESTIMONIALS[activeTestimony].name}</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Animate>
-        <div className={"container " + classes.team_section}>
-          <h1 className={classes.team_title}>{"Our Talented Team"}</h1>
-          <div className={classes.team_members}>
-            {TEAM.map((team) => (
-              <TeamMemberCard key={team.id} {...team} />
+      <Seo
+        title="About Us"
+        path="/about-us"
+        description="Sharav Infotech is an independently owned technology consultancy in Mississauga, Ontario, helping organizations design, build, test and support their technology."
+      />
+      <PageHero label="About us" title="Engineers, designers and long-term partners." lede={ABOUT.intro} />
+
+      <section className="section" aria-labelledby="story-title">
+        <div className={`container ${pageClasses.split}`}>
+          <SectionHeading label="Who we are" id="story-title" title="Technology that serves the organization, not the other way around." />
+          <Reveal className={pageClasses.prose}>
+            {ABOUT.story.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </div>
+          </Reveal>
         </div>
-        <Animate>
-          <div className={"container " + classes.job_opening_section}>
-            <ServiceCard
-              {...JOB_OPENING}
-              imageBgClass={classes.job_opening_bg}
-            />
+      </section>
+
+      <section className={`section ${pageClasses.raised}`} aria-labelledby="principles-title">
+        <div className={`container ${pageClasses.split}`}>
+          <div className={pageClasses.stickyAside}>
+            <SectionHeading label="How we work" id="principles-title" title="Five principles behind every engagement." />
           </div>
-        </Animate>
-      </div>
+          <ol role="list" className={pageClasses.ruledList}>
+            {ABOUT.principles.map((item, index) => (
+              <Reveal as="li" key={item.title} className={pageClasses.ruledItem}>
+                <span className={pageClasses.index}>0{index + 1}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="team-title">
+        <div className="container">
+          <SectionHeading label="Leadership" id="team-title" title="The people you will work with." />
+          <ul role="list" className={classes.team}>
+            {TEAM.map((member, index) => (
+              <Reveal as="li" key={member.id} delay={index * 100} className={classes.member}>
+                <div className={classes.portrait}>
+                  <Image src={member.image} alt={`Portrait of ${member.name}`} fill sizes="(min-width: 768px) 280px, 45vw" />
+                </div>
+                <div className={classes.memberText}>
+                  <h3>{member.name}</h3>
+                  <p className="label">{member.role}</p>
+                  {member.linkedin && (
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={classes.memberLink}>
+                      <Icon name="linkedin" size={18} />
+                      <span>LinkedIn<span className="visually-hidden"> profile of {member.name}</span></span>
+                    </a>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className={`section ${pageClasses.raised}`} aria-labelledby="location-title">
+        <div className={`container ${classes.twoUp}`}>
+          <Reveal className={pageClasses.aside}>
+            <p className="label">Location</p>
+            <h2 id="location-title">Based in Mississauga, Ontario</h2>
+            <address className={classes.address}>
+              {SITE.address.street}
+              <br />
+              {SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}
+              <br />
+              {SITE.address.countryName}
+            </address>
+            <Button href={SITE.address.mapUrl} variant="text" icon="arrow-up-right">
+              Open in Google Maps
+            </Button>
+          </Reveal>
+          <Reveal className={pageClasses.aside} delay={100}>
+            <p className="label">Careers</p>
+            <h2>{CAREERS.title}</h2>
+            <p>{CAREERS.body}</p>
+            <Button href={SITE.careersUrl} variant="text" icon="arrow-up-right">
+              See current openings on Indeed
+            </Button>
+          </Reveal>
+        </div>
+      </section>
+
+      <CtaBand />
     </>
   );
-};
+}
 
-export default AboutUsPage;
+AboutPage.layoutProps = { headerTone: "inverse" };

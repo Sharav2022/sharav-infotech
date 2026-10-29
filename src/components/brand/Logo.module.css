@@ -1,0 +1,41 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625em;
+  color: var(--text-strong);
+  font-size: 1.125rem;
+}
+
+.mark {
+  width: 1.75em;
+  height: 1.75em;
+  flex-shrink: 0;
+}
+
+.upper {
+  fill: var(--logo-primary, var(--indigo-500));
+}
+
+.lower {
+  fill: var(--logo-secondary, currentColor);
+}
+
+:global(.theme-inverse) .upper {
+  fill: var(--logo-primary, var(--indigo-400));
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.32em;
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 112.5;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.secondary {
+  font-weight: 400;
+  color: var(--text-muted);
+}
