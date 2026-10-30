@@ -17,7 +17,10 @@ Branch: `redesign/premium-2026` · Checkpoint: tag `pre-redesign-2026-checkpoint
 | 8 | Verification: build, route/redirect/header checks, browser QA desktop + mobile, form tests | ✅ Done |
 | 9 | Owner review: `CONTENT_VERIFICATION.md` | ⏳ Owner |
 | 10 | Pre-launch operations (below) | ⏳ Owner / ops |
-| 11 | Deploy | ⏳ Not started. Requires authorization |
+| 11 | Deploy | ⏳ Preview deployed; production requires authorization |
+| 12 | **Creative direction v2:** light-first vibrant palette, no black, Bricolage Grotesque, gradient logo | ✅ Done |
+| 13 | **3D:** shared Three.js studio, live hero scene with poster fallback, 9 original pre-rendered compositions | ✅ Done |
+| 14 | **Section redesign:** glass header, bento capabilities, dimensional process, tilting modules, editorial services rows, vivid CTA band, gradient footer | ✅ Done |
 
 ## Information architecture
 

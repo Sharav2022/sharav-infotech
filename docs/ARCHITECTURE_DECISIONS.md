@@ -115,3 +115,43 @@ Applied to all routes via `next.config.js`: CSP (self-only, no third-party origi
 `Permissions-Policy`, HSTS. `script-src` includes `'unsafe-inline'` because the Pages
 Router emits inline bootstrap scripts; moving to nonce-based CSP via middleware is a
 possible follow-up.
+
+---
+
+## ADR-010 · Light-first "Vibrant Digital Innovation" direction (supersedes the dark palette)
+
+**Context.** The owner rejected the first redesign as not premium or vibrant enough and
+mandated no black or near-black styling.
+
+**Decision.** Replace the ink/indigo token set with a light-first palette (royal, violet,
+cyan, teal on white, ice and lavender), with Midnight Indigo `#1d2b78` as the darkest value.
+`.theme-inverse` is replaced by `.theme-vivid` (a royal→violet gradient with white text).
+The display face changes from Archivo to Bricolage Grotesque.
+
+**Consequences.** Every component re-themed through semantic tokens; contrast re-verified
+(see `DESIGN_SYSTEM.md`). A codebase audit confirms no black values: the only `#000`
+literals were CSS mask stencils, now replaced with `#fff`.
+
+## ADR-011 · Three.js for 3D, with a shared studio and an offline render pipeline
+
+**Context.** The brief requires original, high-quality 3D throughout, without hurting
+performance, accessibility or the existing architecture.
+
+**Options considered.**
+- *React Three Fiber + drei:* idiomatic for React, but adds two more dependencies on top of three.js.
+- *Spline:* licensing, runtime size and external hosting conflict with the self-only CSP.
+- *Plain Three.js (chosen):* one dependency, full control, works in both the browser and
+  the offline render page.
+
+**Decision.**
+- `three@0.186.1` is the only new dependency.
+- `src/three/studio.js` defines renderer, lighting and materials once. `heroScene.js` builds the
+  live hero. `scripts/render-3d/scenes.js` builds nine service and brand compositions.
+- **Live 3D only in the hero.** It is lazy-loaded after idle, gated on capability, and falls back
+  to a poster rendered from the same scene, so the switch is seamless and LCP is an image.
+- **All other 3D is pre-rendered** to transparent WebP by rendering the same scenes in a
+  browser (`npm run render:3d`), then optimised with sharp (`npm run render:3d:optimize`).
+
+**Consequences.** Three.js (182 KB gzip) never enters the initial bundle. The CSP is unchanged:
+WebGL needs no extra origins. Renders must be regenerated when scenes change; the pipeline
+is documented and needs no extra dependencies.

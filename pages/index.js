@@ -1,11 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
+import Hero3D from "../src/components/home/Hero3D";
 import ProcessExplorer from "../src/components/home/ProcessExplorer";
-import SystemDiagram from "../src/components/home/SystemDiagram";
+import CtaBand from "../src/components/layout/CtaBand";
 import Seo, { organizationJsonLd } from "../src/components/layout/Seo";
 import Button from "../src/components/ui/Button";
 import Icon from "../src/components/ui/Icon";
 import Reveal from "../src/components/ui/Reveal";
 import SectionHeading from "../src/components/ui/SectionHeading";
+import Tilt from "../src/components/ui/Tilt";
 import {
   DEMONSTRATIONS,
   DIFFERENTIATORS,
@@ -14,9 +17,17 @@ import {
   HERO,
   POSITIONING,
 } from "../src/content/home";
-import { SERVICE_GROUPS, SERVICES, serviceHref } from "../src/content/services";
-import { SITE } from "../src/content/site";
+import { SERVICES, serviceHref, serviceImage } from "../src/content/services";
 import classes from "../src/styles/Home.module.css";
+
+// Bento layout spans for the seven capability tiles (12-column grid).
+const BENTO = ["wide", "narrow", "narrow", "wide", "third", "third", "third"];
+const DEMO_IMAGES = {
+  modernize: "/images/3d/web-development.webp",
+  cloud: "/images/3d/cloud-services.webp",
+  quality: "/images/3d/software-testing.webp",
+};
+const ORB_HUES = ["royal", "violet", "cyan", "teal", "royal", "violet", "cyan"];
 
 export default function HomePage() {
   return (
@@ -27,15 +38,16 @@ export default function HomePage() {
         jsonLd={organizationJsonLd()}
       />
 
-      {/* A — Hero */}
-      <section className={`theme-inverse ${classes.hero}`} aria-labelledby="hero-title">
-        <div className={`blueprint-grid ${classes.heroGrid}`} aria-hidden="true" />
+      {/* A: Hero */}
+      <section className={`luminous ${classes.hero}`} aria-labelledby="hero-title">
+        <div className={`grid-lines ${classes.heroGrid}`} aria-hidden="true" />
         <div className={`container-wide ${classes.heroInner}`}>
           <div className={classes.heroCopy}>
-            <p className={`label ${classes.heroEyebrow}`}>{HERO.eyebrow}</p>
+            <p className="label">{HERO.eyebrow}</p>
             <h1 id="hero-title" className={classes.heroTitle}>
-              <span>{HERO.title[0]}</span>
-              <span className={classes.heroTitleAccent}>{HERO.title[1]}</span>
+              <span>{HERO.title[0]}</span>{" "}
+              <span className="gradient-text">{HERO.title[1]}</span>{" "}
+              <span>{HERO.title[2]}</span>
             </h1>
             <p className={`lede ${classes.heroLede}`}>{HERO.lede}</p>
             <div className={classes.heroActions}>
@@ -46,83 +58,124 @@ export default function HomePage() {
                 {HERO.secondary.label}
               </Button>
             </div>
-            <p className={classes.heroMeta}>
-              <span className={classes.metaDot} aria-hidden="true" />
-              Mississauga, Ontario · Serving organizations across Canada
-            </p>
+            <ul role="list" className={classes.highlights}>
+              {HERO.highlights.map((item) => (
+                <li key={item}>
+                  <Icon name="check" size={16} />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className={classes.heroVisual}>
-            <SystemDiagram />
+            <Hero3D />
+            <div className={`${classes.chip} ${classes.chipA}`} aria-hidden="true">
+              <span className={classes.chipDot} />
+              <span>
+                <strong>Architecture</strong>
+                <small>API · Services · Data</small>
+              </span>
+            </div>
+            <div className={`${classes.chip} ${classes.chipB}`} aria-hidden="true">
+              <span className={`${classes.chipDot} ${classes.chipDotTeal}`} />
+              <span>
+                <strong>Validated</strong>
+                <small>Every release, every browser</small>
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* B — Positioning */}
+      {/* B: Positioning */}
       <section className="section" aria-labelledby="positioning-title">
-        <div className={`container ${classes.positioning}`}>
-          <SectionHeading index="01" label={POSITIONING.label} title={POSITIONING.title} id="positioning-title" />
-          <Reveal className={classes.positioningBody} delay={120}>
-            {POSITIONING.body.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
+        <div className="container">
+          <Reveal className={classes.statementWrap}>
+            <p className="label">01 · {POSITIONING.label}</p>
+            <h2 id="positioning-title" className={classes.statement}>
+              A Mississauga engineering team for organizations that need
+              technology to <span className="gradient-text">simply work</span>.
+            </h2>
           </Reveal>
-          <ol role="list" className={classes.problems}>
-            {POSITIONING.problems.map((problem, index) => (
-              <Reveal as="li" key={problem.title} delay={index * 90} className={classes.problem}>
-                <span className={classes.problemIndex}>P.0{index + 1}</span>
-                <h3>{problem.title}</h3>
-                <p>{problem.body}</p>
-              </Reveal>
-            ))}
-          </ol>
+          <div className={classes.positioning}>
+            <Reveal className={classes.positioningBody} delay={100}>
+              {POSITIONING.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </Reveal>
+            <ol role="list" className={classes.problems}>
+              {POSITIONING.problems.map((problem, index) => (
+                <Reveal as="li" key={problem.title} delay={index * 110} className={`glass-card ${classes.problem}`}>
+                  <span className={`${classes.orb} ${classes[ORB_HUES[index + 1]]}`} aria-hidden="true">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <h3>{problem.title}</h3>
+                    <p>{problem.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
-      {/* C — Capabilities */}
-      <section id="capabilities" className={`section ${classes.capabilities}`} aria-labelledby="capabilities-title">
+      {/* C: Capabilities (bento with 3D renders) */}
+      <section id="capabilities" className={`section surface-tint ${classes.capabilities}`} aria-labelledby="capabilities-title">
         <div className="container">
           <SectionHeading
             index="02"
             label="Capabilities"
             id="capabilities-title"
-            title="Seven disciplines, one accountable team."
+            title={
+              <>
+                Seven disciplines. <span className="gradient-text">One accountable team.</span>
+              </>
+            }
             lede="From the first interface sketch to the infrastructure underneath and the support that follows launch."
           />
-          <div className={classes.groups}>
-            {SERVICE_GROUPS.map((group) => (
-              <Reveal key={group.id} className={classes.group}>
-                <div className={classes.groupHead}>
-                  <h3 className={classes.groupTitle}>{group.label}</h3>
-                  <p>{group.summary}</p>
-                </div>
-                <ul role="list" className={classes.serviceRows}>
-                  {SERVICES.filter((s) => s.group === group.id).map((service) => (
-                    <li key={service.slug}>
-                      <Link href={serviceHref(service)} className={classes.serviceRow}>
-                        <span className={classes.serviceCode}>{service.code}</span>
-                        <span className={classes.serviceText}>
-                          <span className={classes.serviceTitle}>{service.title}</span>
-                          <span className={classes.serviceShort}>{service.short}</span>
-                        </span>
-                        <Icon name="arrow-up-right" size={22} className={classes.serviceArrow} />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+          <ul role="list" className={classes.bento}>
+            {SERVICES.map((service, index) => (
+              <Reveal as="li" key={service.slug} delay={(index % 3) * 90} className={classes[BENTO[index]]}>
+                <Tilt max={4} className={classes.tile}>
+                  <Link href={serviceHref(service)} className={classes.tileLink}>
+                    <span className={classes.tileImage}>
+                      <Image
+                        src={serviceImage(service)}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 40vw, 90vw"
+                      />
+                    </span>
+                    <span className={classes.tileText}>
+                      <span className={classes.tileCode}>{service.code}</span>
+                      <span className={classes.tileTitle}>{service.title}</span>
+                      <span className={classes.tileShort}>{service.short}</span>
+                    </span>
+                    <span className={classes.tileArrow} aria-hidden="true">
+                      <Icon name="arrow-up-right" size={20} />
+                    </span>
+                  </Link>
+                </Tilt>
               </Reveal>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* D — Challenge to solution */}
-      <section id="approach" className="section theme-inverse" aria-labelledby="approach-title">
+      {/* D: Challenge to solution */}
+      <section id="approach" className={`section surface-soft ${classes.process}`} aria-labelledby="approach-title">
+        <div className={`grid-lines ${classes.processGrid}`} aria-hidden="true" />
         <div className="container">
           <SectionHeading
             index="03"
             label="From challenge to solution"
             id="approach-title"
-            title="A delivery process you can see into."
+            title={
+              <>
+                A delivery journey <span className="gradient-text">you can see into.</span>
+              </>
+            }
             lede="Six stages, each with a clear purpose and a tangible output. Select a stage to see what happens and why it matters."
           />
           <Reveal className={classes.processWrap}>
@@ -131,7 +184,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* E — Technology expertise */}
+      {/* E: Technology expertise */}
       <section className="section" aria-labelledby="expertise-title">
         <div className="container">
           <SectionHeading
@@ -140,31 +193,36 @@ export default function HomePage() {
             id="expertise-title"
             title="Engineering disciplines and the tools behind them."
           />
-          <Reveal className={classes.matrix}>
+          <ul role="list" className={classes.modules}>
             {EXPERTISE.map((area, index) => (
-              <div key={area.id} className={classes.matrixCell}>
-                <span className={classes.matrixIndex}>{String(index + 1).padStart(2, "0")}</span>
-                <h3 className={classes.matrixTitle}>{area.title}</h3>
-                <p className={classes.matrixDetail}>{area.detail}</p>
-                <ul role="list" className={classes.tags}>
-                  {area.stack.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+              <Reveal as="li" key={area.id} delay={(index % 4) * 80}>
+                <Tilt className={classes.module}>
+                  <span className={`${classes.orb} ${classes[ORB_HUES[index]]}`} aria-hidden="true" />
+                  <span className={classes.moduleIndex}>{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className={classes.moduleTitle}>{area.title}</h3>
+                  <p className={classes.moduleDetail}>{area.detail}</p>
+                  <ul role="list" className={classes.tags}>
+                    {area.stack.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </Tilt>
+              </Reveal>
             ))}
-            <div className={`${classes.matrixCell} ${classes.matrixCta}`}>
-              <p>Working with a stack that is not listed here?</p>
-              <Button href="/contact" variant="text">
-                Ask us about it
-              </Button>
-            </div>
-          </Reveal>
+            <Reveal as="li" delay={240}>
+              <div className={`theme-vivid ${classes.module} ${classes.moduleCta}`}>
+                <p>Working with a stack that is not listed here?</p>
+                <Button href="/contact" variant="inverse" size="sm">
+                  Ask us about it
+                </Button>
+              </div>
+            </Reveal>
+          </ul>
         </div>
       </section>
 
-      {/* F — Featured work (capability demonstrations) */}
-      <section className={`section ${classes.demos}`} aria-labelledby="demos-title">
+      {/* F: Featured work (capability demonstrations) */}
+      <section className="section surface-tint" aria-labelledby="demos-title">
         <div className="container">
           <SectionHeading
             index="05"
@@ -173,54 +231,50 @@ export default function HomePage() {
             title="How we approach typical engagements."
             lede="These are illustrative scenarios that show our method. They are not client case studies; detailed project references are available on request."
           />
-          <div className={classes.demoGrid}>
+          <div className={classes.demos}>
             {DEMONSTRATIONS.map((demo, index) => (
-              <Reveal as="article" key={demo.id} delay={index * 90} className={classes.demo}>
-                <p className={classes.demoTag}>
-                  <span>Demonstration</span>
-                  <span>{demo.label}</span>
-                </p>
-                <h3 className={classes.demoTitle}>{demo.title}</h3>
-                <dl className={classes.demoBody}>
-                  <div>
-                    <dt className="label">Challenge</dt>
-                    <dd>{demo.challenge}</dd>
-                  </div>
-                  <div>
-                    <dt className="label">Approach</dt>
-                    <dd>{demo.approach}</dd>
-                  </div>
-                  <div>
-                    <dt className="label">Solution</dt>
-                    <dd>{demo.solution}</dd>
-                  </div>
-                  <div>
-                    <dt className="label">Engineering considerations</dt>
-                    <dd>
-                      <ul role="list" className={classes.tags}>
-                        {demo.considerations.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </dd>
-                  </div>
-                </dl>
+              <Reveal as="article" key={demo.id} className={classes.demo} data-flip={index % 2 ? "" : undefined}>
+                <div className={classes.demoVisual}>
+                  <Image src={DEMO_IMAGES[demo.id]} alt="" fill sizes="(min-width: 1024px) 40vw, 90vw" />
+                  <span className={classes.demoBadge}>Illustrative demonstration</span>
+                </div>
+                <div className={classes.demoCopy}>
+                  <p className="label">{demo.label}</p>
+                  <h3 className={classes.demoTitle}>{demo.title}</h3>
+                  <dl className={classes.demoBody}>
+                    <div>
+                      <dt>Challenge</dt>
+                      <dd>{demo.challenge}</dd>
+                    </div>
+                    <div>
+                      <dt>Approach</dt>
+                      <dd>{demo.approach}</dd>
+                    </div>
+                    <div>
+                      <dt>Solution</dt>
+                      <dd>{demo.solution}</dd>
+                    </div>
+                  </dl>
+                  <ul role="list" className={classes.tags} aria-label="Engineering considerations">
+                    {demo.considerations.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* G — Why Sharav */}
+      {/* G: Why Sharav */}
       <section className="section" aria-labelledby="why-title">
         <div className={`container ${classes.why}`}>
           <div className={classes.whyIntro}>
-            <SectionHeading
-              index="06"
-              label="Why Sharav"
-              id="why-title"
-              title="What you can expect from working with us."
-            />
+            <SectionHeading index="06" label="Why Sharav" id="why-title" title="What you can expect from working with us." />
+            <Reveal className={classes.whyVisual} delay={120}>
+              <Image src="/images/3d/brand.webp" alt="" fill sizes="(min-width: 1024px) 35vw, 80vw" />
+            </Reveal>
           </div>
           <ol role="list" className={classes.whyList}>
             {DIFFERENTIATORS.map((item, index) => (
@@ -236,8 +290,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* H — Engagement */}
-      <section className={`section ${classes.engagement}`} aria-labelledby="engage-title">
+      {/* H: Engagement */}
+      <section className="section surface-soft" aria-labelledby="engage-title">
         <div className="container">
           <SectionHeading
             index="07"
@@ -247,8 +301,10 @@ export default function HomePage() {
           />
           <ol role="list" className={classes.steps}>
             {ENGAGEMENT.map((step, index) => (
-              <Reveal as="li" key={step.title} delay={index * 90} className={classes.stepItem}>
-                <span className={classes.stepNum}>Step {index + 1}</span>
+              <Reveal as="li" key={step.title} delay={index * 110} className={classes.stepItem}>
+                <span className={`${classes.orb} ${classes[ORB_HUES[index]]} ${classes.stepOrb}`} aria-hidden="true">
+                  {index + 1}
+                </span>
                 <h3>{step.title}</h3>
                 <p>{step.body}</p>
               </Reveal>
@@ -257,33 +313,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* I — Closing CTA */}
-      <section className={`theme-inverse ${classes.closing}`} aria-labelledby="closing-title">
-        <div className={`blueprint-grid ${classes.heroGrid}`} aria-hidden="true" />
-        <div className={`container ${classes.closingInner}`}>
-          <Reveal>
-            <p className="label">Start a project</p>
-            <h2 id="closing-title" className={classes.closingTitle}>
-              Have a system to build, fix or modernize?
-            </h2>
-            <p className={`lede ${classes.closingLede}`}>
-              Tell us where you are and where you need to be. We will reply to
-              arrange a conversation with someone who can talk through the
-              engineering.
-            </p>
-            <div className={classes.heroActions}>
-              <Button href="/contact" size="lg" variant="inverse">
-                Discuss your project
-              </Button>
-              <Button href={SITE.phone.href} size="lg" variant="secondary" icon="phone">
-                {SITE.phone.display}
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* I: Closing CTA */}
+      <CtaBand label="Start a project" title="Have a system to build, fix or modernize?" />
     </>
   );
 }
-
-HomePage.layoutProps = { headerTone: "inverse" };

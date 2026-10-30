@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "brand:assets": "node scripts/build-brand-assets.mjs"
+    "brand:assets": "node scripts/build-brand-assets.mjs",
+    "render:3d": "node scripts/render-3d/serve.mjs",
+    "render:3d:optimize": "node scripts/render-3d/optimize.mjs"
   },
   "dependencies": {
     "next": "^16.4.3",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "sharp": "^0.35.5"

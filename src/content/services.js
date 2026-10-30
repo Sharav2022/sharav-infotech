@@ -180,3 +180,6 @@ export const serviceHref = (service) =>
   service.href ?? `/services/${service.slug}`;
 
 export const DETAIL_SERVICES = SERVICES.filter((service) => !service.href);
+
+// Original 3D render for each service (scripts/render-3d).
+export const serviceImage = (service) => `/images/3d/${service.slug}.webp`;

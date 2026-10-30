@@ -1,13 +1,48 @@
 .footer {
-  padding-top: var(--space-20);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--ice-50) 0%, var(--lavender-100) 100%);
   border-top: 1px solid var(--border-subtle);
+}
+
+.glow {
+  position: absolute;
+  inset: auto -10% -40% auto;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(128, 86, 247, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.top {
+  position: relative;
+  padding-top: var(--space-20);
+}
+
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding-bottom: var(--space-16);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.statement {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.045em;
+  color: var(--text-strong);
 }
 
 .grid {
   display: grid;
   gap: var(--space-12) var(--space-8);
   grid-template-columns: 1fr;
-  padding-bottom: var(--space-16);
+  padding-block: var(--space-16);
 }
 
 .brandCol {
@@ -18,7 +53,7 @@
 
 .tagline {
   max-width: 22rem;
-  color: var(--text-muted);
+  color: var(--text-body);
 }
 
 .social {
@@ -35,20 +70,25 @@
   align-items: flex-start;
   color: var(--text-body);
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-standard);
+  transition: color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-base) var(--ease-emphasis);
 }
 
 .social a:hover,
 .col li a:hover,
 .contact a:hover {
-  color: var(--text-strong);
+  color: var(--royal-600);
+}
+
+.col li a:hover {
+  transform: translateX(3px);
 }
 
 .social svg,
 .contact svg {
   flex-shrink: 0;
   margin-top: 0.2em;
-  color: var(--text-muted);
+  color: var(--violet-600);
 }
 
 .col {
@@ -69,12 +109,13 @@
 }
 
 .base {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-4);
   padding-block: var(--space-6);
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-default);
   font-size: var(--text-sm);
   color: var(--text-muted);
 }
@@ -86,11 +127,6 @@
 
 .legal a {
   color: inherit;
-}
-
-.coords {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
 }
 
 @media (min-width: 768px) {

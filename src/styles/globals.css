@@ -30,6 +30,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
 h1,
@@ -54,7 +55,8 @@ ol[role="list"] {
 
 img,
 svg,
-video {
+video,
+canvas {
   display: block;
   max-width: 100%;
 }
@@ -84,12 +86,12 @@ button {
 :focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
 }
 
 ::selection {
-  background: var(--indigo-500);
-  color: #fff;
+  background: var(--violet-300);
+  color: var(--midnight);
 }
 
 /* ---------- Typography primitives ---------- */
@@ -98,7 +100,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" var(--display-width);
+  font-optical-sizing: auto;
   color: var(--text-strong);
   font-weight: 600;
   letter-spacing: var(--tracking-display);
@@ -110,22 +112,29 @@ p {
   text-wrap: pretty;
 }
 
-/* ---------- Inverse (dark) surface ----------
-   Re-maps the semantic tokens so every component works on ink surfaces. */
-.theme-inverse {
-  --surface-page: var(--ink-950);
-  --surface-raised: var(--ink-900);
-  --surface-sunken: var(--ink-1000);
-  --text-strong: var(--text-inverse-strong);
-  --text-body: var(--text-inverse-body);
-  --text-muted: var(--text-inverse-muted);
-  --text-accent: var(--text-inverse-accent);
-  --border-subtle: var(--border-inverse-subtle);
-  --border-default: var(--border-inverse-default);
-  --border-strong: rgba(255, 255, 255, 0.32);
-  --grid-line: var(--grid-line-inverse);
-  --focus-ring: var(--focus-ring-inverse);
-  background: var(--surface-page);
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Keeps descenders inside the clipped background */
+  padding-bottom: 0.08em;
+}
+
+/* ---------- Vivid surface ----------
+   A royal-to-violet gradient with white text, for CTA bands and highlights.
+   Re-maps the semantic tokens so components work on it unchanged. */
+.theme-vivid {
+  --text-strong: var(--text-on-vivid);
+  --text-body: var(--text-on-vivid-muted);
+  --text-muted: var(--text-on-vivid-muted);
+  --text-accent: #ffffff;
+  --border-subtle: rgba(255, 255, 255, 0.16);
+  --border-default: rgba(255, 255, 255, 0.28);
+  --border-strong: rgba(255, 255, 255, 0.5);
+  --grid-line: rgba(255, 255, 255, 0.07);
+  --focus-ring: 0 0 0 2px var(--violet-700), 0 0 0 4px #ffffff;
+  background: var(--gradient-vivid);
   color: var(--text-body);
 }
 
@@ -149,27 +158,64 @@ p {
   position: relative;
 }
 
-.blueprint-grid {
-  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-position: -1px -1px;
+.surface-tint {
+  background: var(--surface-tint);
 }
 
+.surface-soft {
+  background: var(--gradient-soft);
+}
+
+.luminous {
+  background: var(--gradient-luminous);
+}
+
+.grid-lines {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Eyebrow label: mono, spaced, with a spectrum tick. */
 .label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-accent);
+}
+
+.label::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-spectrum);
+}
+
+.theme-vivid .label::before {
+  background: linear-gradient(90deg, #ffffff, var(--cyan-300));
 }
 
 .lede {
   font-size: var(--text-lg);
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--text-body);
   max-width: var(--width-prose);
+}
+
+/* Frosted glass surface for floating cards and panels. */
+.glass-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-2);
+  border-radius: var(--radius-lg);
 }
 
 .visually-hidden {
@@ -190,7 +236,7 @@ p {
   top: -100px;
   z-index: 100;
   padding: var(--space-3) var(--space-4);
-  background: var(--ink-950);
+  background: var(--royal-600);
   color: #fff;
   font-weight: 500;
   border-radius: var(--radius-sm);
@@ -203,7 +249,7 @@ p {
 /* ---------- Scroll reveal ---------- */
 [data-reveal] {
   opacity: 0;
-  transform: translate3d(0, 18px, 0);
+  transform: translate3d(0, 24px, 0) scale(0.985);
   transition: opacity var(--duration-reveal) var(--ease-emphasis),
     transform var(--duration-reveal) var(--ease-emphasis);
   transition-delay: var(--reveal-delay, 0ms);
@@ -225,4 +271,15 @@ p {
 html:not(.js) [data-reveal] {
   opacity: 1;
   transform: none;
+}
+
+/* ---------- Pointer tilt (see components/ui/Tilt.js) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  [data-tilt] {
+    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
+    transition: transform var(--duration-slow) var(--ease-emphasis),
+      box-shadow var(--duration-base) var(--ease-standard);
+    will-change: transform;
+  }
 }

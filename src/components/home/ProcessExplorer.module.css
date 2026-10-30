@@ -15,15 +15,17 @@
   position: absolute;
   left: calc(100% / 12);
   right: calc(100% / 12);
-  top: 7px;
-  height: 1px;
-  background: var(--border-default);
+  top: 22px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(52, 87, 255, 0.12);
 }
 
 .railFill {
   position: absolute;
   inset: 0;
-  background: var(--indigo-400);
+  border-radius: inherit;
+  background: var(--gradient-spectrum);
   transform-origin: left;
   transform: scaleX(var(--progress));
   transition: transform var(--duration-slow) var(--ease-emphasis);
@@ -39,29 +41,34 @@
   background: none;
   color: var(--text-muted);
   text-align: center;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
 }
 
+/* Glossy dimensional node: a pearl sphere that becomes a lit gradient orb. */
 .node {
-  width: 15px;
-  height: 15px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1px solid var(--border-strong);
-  background: var(--surface-page);
-  transition: background-color var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard),
+  background: radial-gradient(circle at 32% 28%, #ffffff 0%, #ffffff 18%, var(--lavender-100) 55%, #d6dcff 100%);
+  box-shadow: inset -4px -6px 10px rgba(52, 87, 255, 0.16), 0 8px 18px -6px rgba(52, 87, 255, 0.3);
+  transition: transform var(--duration-slow) var(--ease-emphasis),
+    background var(--duration-base) var(--ease-standard),
     box-shadow var(--duration-base) var(--ease-standard);
 }
 
 .step[data-complete] .node {
-  border-color: var(--indigo-400);
-  background: var(--indigo-500);
+  background: radial-gradient(circle at 32% 28%, #ffffff 0%, var(--cyan-300) 16%, var(--royal-500) 58%, var(--violet-700) 100%);
+  box-shadow: inset -4px -6px 10px rgba(29, 43, 120, 0.25), 0 10px 22px -8px rgba(52, 87, 255, 0.6);
 }
 
 .step[aria-selected="true"] .node {
-  background: var(--signal-400);
-  border-color: var(--signal-400);
-  box-shadow: 0 0 0 5px rgba(95, 220, 192, 0.16);
+  transform: translateY(-6px) scale(1.15);
+  box-shadow: inset -4px -6px 10px rgba(29, 43, 120, 0.25), 0 0 0 8px rgba(128, 86, 247, 0.16),
+    0 18px 30px -10px rgba(91, 63, 224, 0.6);
+}
+
+.step:hover .node {
+  transform: translateY(-4px);
 }
 
 .stepIndex {
@@ -72,10 +79,9 @@
 
 .stepTitle {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" var(--display-width);
   font-weight: 600;
-  font-size: var(--text-sm);
-  letter-spacing: -0.01em;
+  font-size: var(--text-md);
+  letter-spacing: -0.02em;
   transition: color var(--duration-fast) var(--ease-standard);
 }
 
@@ -89,16 +95,19 @@
   display: grid;
   gap: var(--space-8);
   padding: var(--space-8);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  background: var(--surface-raised);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-3);
   animation: panelIn var(--duration-slow) var(--ease-emphasis);
 }
 
 @keyframes panelIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px) scale(0.99);
   }
 }
 
@@ -109,10 +118,14 @@
 }
 
 .bigIndex {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xl);
-  color: var(--indigo-400);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
   line-height: 1;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .panelTitle {
@@ -132,11 +145,18 @@
 .output {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--signal-400) !important;
+  color: var(--violet-700) !important;
 }
 
 /* Narrow screens: the track shows indices only; the panel names the stage. */
 @media (max-width: 639px) {
+  .node {
+    width: 34px;
+    height: 34px;
+  }
+  .rail {
+    top: 15px;
+  }
   .stepTitle {
     position: absolute;
     width: 1px;

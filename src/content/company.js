@@ -45,6 +45,12 @@ export const TEAM = [
     role: "Senior Manager",
     image: "/images/team/RomaRoyPic.jpg",
   },
+  {
+    id: "khushi",
+    // TODO(owner): confirm full name and role before launch.
+    name: "Khushi",
+    image: "/images/team/khushi.jpg",
+  },
 ];
 
 export const CAREERS = {

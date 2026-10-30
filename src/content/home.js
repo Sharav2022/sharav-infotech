@@ -2,10 +2,12 @@
 
 export const HERO = {
   eyebrow: "Software · Cloud · Quality · Consulting",
-  title: ["Technology with purpose.", "Engineering built to last."],
+  // Rendered as three lines; the middle line carries the gradient.
+  title: ["Engineering ideas into", "extraordinary", "digital experiences."],
   lede: "Sharav Infotech designs, develops, integrates and supports the software your business runs on, from first architecture sketch to years of dependable operation.",
   primary: { label: "Discuss your project", href: "/contact" },
   secondary: { label: "Explore our expertise", href: "#capabilities" },
+  highlights: ["Architecture-first delivery", "Design to long-term support", "Based in Mississauga, Ontario"],
 };
 
 export const POSITIONING = {

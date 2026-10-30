@@ -72,12 +72,12 @@ textarea.input {
 
 .input:focus-visible {
   outline: none;
-  border-color: var(--indigo-500);
-  box-shadow: 0 0 0 3px rgba(75, 80, 230, 0.18);
+  border-color: var(--royal-500);
+  box-shadow: 0 0 0 3px rgba(52, 87, 255, 0.18);
 }
 
 .input[aria-invalid="true"] {
-  border-color: var(--danger-500);
+  border-color: var(--danger-600);
 }
 
 .counter {
@@ -89,14 +89,14 @@ textarea.input {
 
 .error {
   font-size: var(--text-sm);
-  color: var(--danger-500);
+  color: var(--danger-600);
 }
 
 .formError {
   padding: var(--space-4);
   border-radius: var(--radius-sm);
   background: var(--danger-100);
-  color: #8f2424;
+  color: #9b1f45;
   font-size: var(--text-sm);
 }
 
@@ -140,7 +140,7 @@ textarea.input {
   height: 3rem;
   border-radius: 50%;
   background: var(--success-100);
-  color: var(--success-500);
+  color: var(--success-600);
 }
 
 @media (min-width: 640px) {

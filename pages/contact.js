@@ -16,11 +16,16 @@ export default function ContactPage() {
       />
       <PageHero
         label="Contact"
-        title="Tell us what you are building."
+        title={
+          <>
+            Tell us what you are <span className="gradient-text">building.</span>
+          </>
+        }
         lede="Share a few details about your organization and project. The more context you give, the more useful our first conversation will be."
+        image="/images/3d/contact.webp"
       />
 
-      <section className="section">
+      <section className="section surface-soft">
         <div className={`container ${classes.layout}`}>
           <div className={classes.formCol}>
             <ContactForm />
@@ -75,4 +80,3 @@ export default function ContactPage() {
   );
 }
 
-ContactPage.layoutProps = { headerTone: "inverse" };

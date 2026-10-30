@@ -8,9 +8,16 @@
   display: grid;
   gap: var(--space-6);
   padding: var(--space-8);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  background: var(--surface-page);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-2);
+  transition: transform var(--duration-base) var(--ease-emphasis), box-shadow var(--duration-base);
+}
+
+.phase:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-3);
 }
 
 .phaseHead {
@@ -21,7 +28,13 @@
 }
 
 .phaseHead h3 {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
+  line-height: 1;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
 }
 
 .phaseIndex {
@@ -29,7 +42,7 @@
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-accent);
+  color: var(--violet-700);
 }
 
 .aspects {
@@ -49,14 +62,14 @@
 }
 
 .aspects p {
-  color: var(--text-muted);
+  color: var(--text-body);
   font-size: var(--text-sm);
 }
 
 .aspectIndex {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: var(--royal-600);
   padding-top: 0.3em;
 }
 

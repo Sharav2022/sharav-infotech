@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+  Offline renderer for Sharav Infotech 3D imagery.
+  Serve the repository root (npm run render:3d:serve) and open
+  http://localhost:3200/scripts/render-3d/?scene=cloud-services
+  Use "Download PNG" to export a transparent render at 2x.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sharav 3D renderer</title>
+    <style>
+      body { margin: 0; font: 14px system-ui; background: linear-gradient(135deg, #edf7ff, #f1ebff); color: #24318f; }
+      header { display: flex; gap: 8px; flex-wrap: wrap; padding: 12px; }
+      canvas { display: block; max-width: 100%; height: auto; }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/node_modules/three/build/three.module.js",
+          "three/examples/jsm/": "/node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header id="controls"></header>
+    <canvas id="stage"></canvas>
+    <script type="module">
+      import { createStudio, disposeScene } from "/src/three/studio.js";
+      import { SCENES } from "./scenes.js";
+
+      const canvas = document.getElementById("stage");
+
+      window.renderScene = async (name, width = 1200, height = 1000) => {
+        const studio = createStudio({ canvas, width, height, pixelRatio: 1, preserve: true });
+        const { camera: position } = SCENES[name](studio);
+        studio.camera.position.set(...position);
+        studio.camera.lookAt(0, 0, 0);
+        // Two passes so transmission picks up the fully rendered scene.
+        studio.renderer.render(studio.scene, studio.camera);
+        studio.renderer.render(studio.scene, studio.camera);
+        const url = canvas.toDataURL("image/png");
+        disposeScene(studio.scene);
+        studio.renderer.dispose();
+        return url;
+      };
+
+      const controls = document.getElementById("controls");
+      for (const name of Object.keys(SCENES)) {
+        const button = document.createElement("button");
+        button.textContent = name;
+        button.onclick = async () => {
+          const url = await window.renderScene(name, 2400, 2000);
+          const a = Object.assign(document.createElement("a"), { href: url, download: `${name}.png` });
+          a.click();
+        };
+        controls.append(button);
+      }
+      const initial = new URLSearchParams(location.search).get("scene");
+      if (initial) window.renderScene(initial);
+      window.rendererReady = true;
+    </script>
+  </body>
+</html>

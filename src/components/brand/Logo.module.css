@@ -1,41 +1,43 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.625em;
-  color: var(--text-strong);
-  font-size: 1.125rem;
+  gap: 0.6em;
+  font-size: 1.2rem;
 }
 
 .mark {
   width: 1.75em;
   height: 1.75em;
   flex-shrink: 0;
+  transition: transform var(--duration-slow) var(--ease-emphasis);
 }
 
-.upper {
-  fill: var(--logo-primary, var(--indigo-500));
-}
-
-.lower {
-  fill: var(--logo-secondary, currentColor);
-}
-
-:global(.theme-inverse) .upper {
-  fill: var(--logo-primary, var(--indigo-400));
+a:hover > .logo .mark,
+a:hover .logo .mark {
+  transform: rotate(-8deg) scale(1.05);
 }
 
 .wordmark {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.32em;
+  gap: 0.28em;
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 112.5;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: 1;
+  color: var(--midnight);
 }
 
 .secondary {
   font-weight: 400;
-  color: var(--text-muted);
+  color: var(--slate-500);
+}
+
+.white .wordmark,
+.white .secondary {
+  color: #ffffff;
+}
+
+.white .secondary {
+  opacity: 0.85;
 }

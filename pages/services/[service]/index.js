@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import CtaBand from "../../../src/components/layout/CtaBand";
 import PageHero from "../../../src/components/layout/PageHero";
@@ -6,7 +7,7 @@ import Icon from "../../../src/components/ui/Icon";
 import Reveal from "../../../src/components/ui/Reveal";
 import SectionHeading from "../../../src/components/ui/SectionHeading";
 import { PROCESS } from "../../../src/content/home";
-import { DETAIL_SERVICES, SERVICES, serviceHref } from "../../../src/content/services";
+import { DETAIL_SERVICES, SERVICES, serviceHref, serviceImage } from "../../../src/content/services";
 import { SITE } from "../../../src/content/site";
 import pageClasses from "../../../src/styles/Pages.module.css";
 import classes from "../../../src/styles/Services.module.css";
@@ -40,6 +41,7 @@ export default function ServicePage({ slug }) {
         title={service.title}
         lede={service.summary}
         trail={[{ label: "Services", href: "/services" }]}
+        image={serviceImage(service)}
       >
         <p className={classes.detailCode}>Service {service.code} / 07</p>
       </PageHero>
@@ -68,7 +70,7 @@ export default function ServicePage({ slug }) {
         </div>
       </section>
 
-      <section className={`section ${pageClasses.raised}`} aria-labelledby="includes-title">
+      <section className="section surface-tint" aria-labelledby="includes-title">
         <div className={`container ${pageClasses.split}`}>
           <SectionHeading label="Scope" title="What the service includes" id="includes-title" />
           <Reveal as="ul" role="list" className={pageClasses.checklist}>
@@ -104,7 +106,7 @@ export default function ServicePage({ slug }) {
         </div>
       </section>
 
-      <section className={`section ${pageClasses.raised}`} aria-labelledby="related-title">
+      <section className="section surface-soft" aria-labelledby="related-title">
         <div className="container">
           <p className="label" id="related-title">
             Related services
@@ -113,7 +115,9 @@ export default function ServicePage({ slug }) {
             {related.map((item) => (
               <li key={item.slug}>
                 <Link href={serviceHref(item)} className={classes.relatedLink}>
-                  <span className={classes.code}>{item.code}</span>
+                  <span className={classes.relatedThumb}>
+                    <Image src={serviceImage(item)} alt="" fill sizes="64px" />
+                  </span>
                   <span>
                     <strong>{item.navTitle}</strong>
                     <small>{item.short}</small>
@@ -131,7 +135,6 @@ export default function ServicePage({ slug }) {
   );
 }
 
-ServicePage.layoutProps = { headerTone: "inverse" };
 
 export function getStaticPaths() {
   return {

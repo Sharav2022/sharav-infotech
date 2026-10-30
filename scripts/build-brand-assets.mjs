@@ -14,7 +14,6 @@ const outputs = [
   { from: source("app-icon.svg"), to: "brand/apple-touch-icon.png", size: 180 },
   { from: source("app-icon.svg"), to: "brand/icon-192.png", size: 192 },
   { from: source("app-icon.svg"), to: "brand/icon-512.png", size: 512 },
-  { from: source("og-image.svg"), to: "brand/og-image.png", width: 1200, height: 630 },
 ];
 
 for (const { from, to, size, width = size, height = size } of outputs) {
@@ -24,6 +23,17 @@ for (const { from, to, size, width = size, height = size } of outputs) {
     .toFile(path.join(root, "public", to));
   console.log("wrote", to);
 }
+
+// Social card: outlined type from source/og-image.svg plus the 3D hero render.
+const render = await sharp(path.join(root, "public/images/3d/hero.webp"))
+  .resize({ width: 640 })
+  .toBuffer();
+await sharp(source("og-image.svg"), { density: 150 })
+  .resize(1200, 630)
+  .composite([{ input: render, left: 600, top: 40 }])
+  .png({ compressionLevel: 9 })
+  .toFile(path.join(root, "public/brand/og-image.png"));
+console.log("wrote brand/og-image.png");
 
 // favicon.ico: a single 32×32 PNG wrapped in an ICO container.
 const png = await sharp(path.join(brand, "favicon.svg"), { density: 300 })

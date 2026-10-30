@@ -1,0 +1,73 @@
+.band {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  padding: clamp(2rem, 1rem + 4vw, 4.5rem);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-3);
+}
+
+.band::before {
+  /* Light sweep across the gradient for depth */
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 70%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(0, 200, 232, 0.35), transparent 60%);
+  pointer-events: none;
+}
+
+.copy {
+  position: relative;
+  display: grid;
+  gap: var(--space-5);
+}
+
+.copy h2 {
+  font-size: var(--text-3xl);
+  line-height: 1.02;
+  max-width: 16ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  max-width: 22rem;
+  width: 100%;
+  justify-self: center;
+}
+
+.visual img {
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .visual img {
+    animation: float 7s var(--ease-standard) infinite alternate;
+  }
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .band {
+    grid-template-columns: 1.4fr 1fr;
+  }
+  .visual {
+    max-width: none;
+  }
+}

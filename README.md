@@ -1,7 +1,8 @@
 # Sharav Infotech website
 
 Marketing site for [Sharav Infotech](https://sharavinfotech.com), built with
-Next.js 16 (Pages Router) and React 19. Hosted on Vercel.
+Next.js 16 (Pages Router), React 19 and Three.js. Hosted on Vercel.
+See docs/DESIGN_SYSTEM.md for the 3D pipeline (`npm run render:3d`).
 
 ## Development
 
@@ -23,7 +24,8 @@ src/components/       brand/ layout/ ui/ home/ contact/
 src/styles/           tokens.css (design tokens), globals.css, page CSS modules
 src/lib/              Contact validation (shared client/server), SendGrid mail
 public/brand/         Logo, favicon, social assets; archive/ holds the original logos
-scripts/              build-brand-assets.mjs (npm run brand:assets)
+src/three/            Shared 3D studio and the live hero scene (Three.js)
+scripts/              build-brand-assets.mjs, render-3d/ (offline 3D render pipeline)
 docs/                 Audit, architecture decisions, design system, plan, content checklist
 ```
 

@@ -72,4 +72,3 @@ export default function PrivacyPage() {
   );
 }
 
-PrivacyPage.layoutProps = { headerTone: "inverse" };

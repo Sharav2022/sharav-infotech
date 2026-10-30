@@ -19,7 +19,16 @@ export default function AboutPage() {
         path="/about-us"
         description="Sharav Infotech is an independently owned technology consultancy in Mississauga, Ontario, helping organizations design, build, test and support their technology."
       />
-      <PageHero label="About us" title="Engineers, designers and long-term partners." lede={ABOUT.intro} />
+      <PageHero
+        label="About us"
+        title={
+          <>
+            Engineers, designers and <span className="gradient-text">long-term partners.</span>
+          </>
+        }
+        lede={ABOUT.intro}
+        image="/images/3d/brand.webp"
+      />
 
       <section className="section" aria-labelledby="story-title">
         <div className={`container ${pageClasses.split}`}>
@@ -32,7 +41,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className={`section ${pageClasses.raised}`} aria-labelledby="principles-title">
+      <section className="section surface-tint" aria-labelledby="principles-title">
         <div className={`container ${pageClasses.split}`}>
           <div className={pageClasses.stickyAside}>
             <SectionHeading label="How we work" id="principles-title" title="Five principles behind every engagement." />
@@ -62,7 +71,7 @@ export default function AboutPage() {
                 </div>
                 <div className={classes.memberText}>
                   <h3>{member.name}</h3>
-                  <p className="label">{member.role}</p>
+                  {member.role && <p className="label">{member.role}</p>}
                   {member.linkedin && (
                     <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={classes.memberLink}>
                       <Icon name="linkedin" size={18} />
@@ -76,7 +85,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className={`section ${pageClasses.raised}`} aria-labelledby="location-title">
+      <section className="section surface-tint" aria-labelledby="location-title">
         <div className={`container ${classes.twoUp}`}>
           <Reveal className={pageClasses.aside}>
             <p className="label">Location</p>
@@ -108,4 +117,3 @@ export default function AboutPage() {
   );
 }
 
-AboutPage.layoutProps = { headerTone: "inverse" };

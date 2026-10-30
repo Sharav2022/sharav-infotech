@@ -1,89 +1,88 @@
 /*
- * Sharav Infotech design tokens.
- * Primitive values are defined once; components consume only the semantic
- * tokens further down. See docs/DESIGN_SYSTEM.md for usage rules.
+ * Sharav Infotech design tokens: "Vibrant Digital Innovation".
+ * Light-first and luminous; no black or near-black values anywhere.
+ * Primitives are defined once; components consume the semantic tokens.
+ * See docs/DESIGN_SYSTEM.md for usage and contrast rules.
  */
 
 :root {
   /* ---------- Primitive palette ---------- */
-  /* Ink: technical navy foundations */
-  --ink-1000: #050810;
-  --ink-950: #080c18;
-  --ink-900: #0c1222;
-  --ink-850: #111933;
-  --ink-800: #18213d;
-  --ink-700: #243050;
+  --royal-700: #2440d9;
+  --royal-600: #2e4bf0;
+  --royal-500: #3457ff;
+  --royal-300: #8ea2ff;
+  --royal-100: #e3e9ff;
 
-  /* Graphite: supporting neutrals */
-  --graphite-600: #4b5468;
-  --graphite-500: #5e677c;
-  --graphite-400: #8d95a8;
-  --graphite-300: #b7bdcb;
-  --graphite-200: #d9dde6;
-  --graphite-100: #e9ecf2;
+  --violet-700: #5b3fe0;
+  --violet-600: #6d45ec;
+  --violet-500: #8056f7;
+  --violet-300: #b9a2ff;
+  --violet-100: #ece4ff;
 
-  /* Paper: cool whites */
-  --paper-50: #f5f7fa;
-  --paper-0: #ffffff;
+  --cyan-500: #00c8e8;
+  --cyan-300: #7fe6f5;
+  --cyan-100: #dcf8fd;
 
-  /* Sharav Indigo: refined from the original logo blue (#4a4ff0) */
-  --indigo-700: #2f33a8;
-  --indigo-600: #3b3fd0;
-  --indigo-500: #4b50e6;
-  --indigo-400: #7378f0;
-  --indigo-300: #a3a6f6;
-  --indigo-100: #e6e7fd;
+  --teal-500: #18c9ad;
+  --teal-300: #85e6d6;
+  --teal-100: #dcf7f2;
 
-  /* Signal: a restrained cool accent for live states and annotations */
-  --signal-500: #2fc8a8;
-  --signal-400: #5fdcc0;
-  --signal-100: #dcf7f0;
+  --midnight: #1d2b78; /* deepest colour in the system: a saturated indigo, not black */
+  --slate-600: #405777;
+  --slate-500: #56688a;
+  --slate-300: #a9b5cc;
 
-  --danger-500: #d64545;
-  --danger-100: #fbe7e7;
-  --success-500: #1f9d78;
-  --success-100: #ddf5ec;
+  --lavender-100: #f1ebff;
+  --lavender-50: #f7f4ff;
+  --ice-100: #edf7ff;
+  --ice-50: #f6fbff;
+  --white: #ffffff;
+
+  --danger-600: #c8325a;
+  --danger-100: #fde8ee;
+  --success-600: #0d7f6e;
+  --success-100: #dcf7f2;
+
+  /* ---------- Gradients ---------- */
+  --gradient-brand: linear-gradient(120deg, var(--royal-500) 0%, var(--violet-600) 100%);
+  --gradient-brand-hover: linear-gradient(120deg, var(--royal-600) 0%, var(--violet-700) 100%);
+  --gradient-vivid: linear-gradient(125deg, #2f4be8 0%, #4a43ea 45%, #5b3fe0 100%);
+  --gradient-spectrum: linear-gradient(90deg, var(--royal-500), var(--violet-500), var(--cyan-500), var(--teal-500));
+  --gradient-text: linear-gradient(100deg, var(--royal-500) 0%, var(--violet-600) 55%, #0aa6c2 100%);
+  --gradient-luminous: radial-gradient(60% 70% at 78% 30%, rgba(128, 86, 247, 0.16), transparent 70%),
+    radial-gradient(50% 60% at 15% 20%, rgba(0, 200, 232, 0.14), transparent 70%),
+    radial-gradient(70% 60% at 50% 100%, rgba(52, 87, 255, 0.1), transparent 70%),
+    linear-gradient(180deg, var(--ice-50) 0%, var(--lavender-50) 100%);
+  --gradient-soft: linear-gradient(160deg, var(--ice-100) 0%, var(--lavender-100) 100%);
 
   /* ---------- Semantic: surfaces ---------- */
-  --surface-page: var(--paper-50);
-  --surface-raised: var(--paper-0);
-  --surface-sunken: var(--graphite-100);
-  --surface-inverse: var(--ink-950);
-  --surface-inverse-raised: var(--ink-900);
-  --surface-inverse-strong: var(--ink-850);
+  --surface-page: var(--white);
+  --surface-raised: var(--white);
+  --surface-tint: var(--ice-50);
+  --surface-lavender: var(--lavender-50);
+  --surface-glass: rgba(255, 255, 255, 0.72);
 
   /* ---------- Semantic: text ---------- */
-  --text-strong: var(--ink-950);
-  --text-body: #2c3446;
-  --text-muted: var(--graphite-500);
-  --text-inverse-strong: #f4f6fb;
-  --text-inverse-body: #c3c9d8;
-  --text-inverse-muted: #8590a8;
-  --text-accent: var(--indigo-600);
-  --text-inverse-accent: var(--indigo-300);
+  --text-strong: var(--midnight);
+  --text-body: var(--slate-600);
+  --text-muted: var(--slate-500);
+  --text-accent: var(--royal-600);
+  --text-on-vivid: #ffffff;
+  --text-on-vivid-muted: #e3e8ff;
 
   /* ---------- Semantic: lines ---------- */
-  --border-subtle: rgba(12, 18, 34, 0.08);
-  --border-default: rgba(12, 18, 34, 0.14);
-  --border-strong: rgba(12, 18, 34, 0.32);
-  --border-inverse-subtle: rgba(255, 255, 255, 0.07);
-  --border-inverse-default: rgba(255, 255, 255, 0.14);
-  --grid-line: rgba(12, 18, 34, 0.05);
-  --grid-line-inverse: rgba(163, 166, 246, 0.07);
+  --border-subtle: rgba(52, 87, 255, 0.08);
+  --border-default: rgba(52, 87, 255, 0.16);
+  --border-strong: rgba(29, 43, 120, 0.28);
+  --grid-line: rgba(52, 87, 255, 0.06);
 
   /* ---------- Semantic: interaction ---------- */
-  --action-primary: var(--indigo-500);
-  --action-primary-hover: var(--indigo-600);
-  --action-primary-text: #ffffff;
-  --focus-ring: 0 0 0 2px var(--surface-page), 0 0 0 4px var(--indigo-500);
-  --focus-ring-inverse: 0 0 0 2px var(--ink-950), 0 0 0 4px var(--signal-400);
+  --focus-ring: 0 0 0 2px var(--white), 0 0 0 4px var(--royal-500);
 
   /* ---------- Typography ---------- */
-  --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
-  --font-body: var(--font-plex-sans), system-ui, -apple-system, "Segoe UI",
-    sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo,
-    monospace;
+  --font-display: var(--font-bricolage), "Segoe UI", system-ui, sans-serif;
+  --font-body: var(--font-plex-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* Fluid type scale: min at 360px viewport, max at 1440px */
   --text-xs: 0.75rem;
@@ -93,15 +92,14 @@
   --text-lg: clamp(1.1875rem, 1.1rem + 0.37vw, 1.4375rem);
   --text-xl: clamp(1.4375rem, 1.27rem + 0.74vw, 1.9375rem);
   --text-2xl: clamp(1.75rem, 1.46rem + 1.3vw, 2.625rem);
-  --text-3xl: clamp(2.125rem, 1.6rem + 2.3vw, 3.75rem);
-  --text-4xl: clamp(2.5rem, 1.7rem + 3.6vw, 5rem);
+  --text-3xl: clamp(2.25rem, 1.65rem + 2.6vw, 4rem);
+  --text-4xl: clamp(2.75rem, 1.75rem + 4.4vw, 5.75rem);
 
-  --leading-tight: 1.04;
-  --leading-snug: 1.2;
-  --leading-body: 1.62;
-  --tracking-display: -0.025em;
-  --tracking-label: 0.12em;
-  --display-width: 112; /* Archivo wdth axis: semi-expanded */
+  --leading-tight: 0.98;
+  --leading-snug: 1.12;
+  --leading-body: 1.65;
+  --tracking-display: -0.035em;
+  --tracking-label: 0.14em;
 
   /* ---------- Spacing (4px base) ---------- */
   --space-1: 0.25rem;
@@ -116,43 +114,39 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
-  --space-section: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --space-section: clamp(4.5rem, 3rem + 6.5vw, 9.5rem);
   --gutter: clamp(1rem, 0.6rem + 1.8vw, 2.5rem);
 
   /* ---------- Layout ---------- */
   --width-prose: 40rem;
   --width-content: 76rem;
   --width-wide: 88rem;
-  --header-height: 4.5rem;
-
-  /* Breakpoints (reference only: CSS custom properties cannot be used in
-     media queries). sm 640 · md 768 · lg 1024 · xl 1280 */
+  --header-height: 4.75rem;
+  /* Breakpoints (reference): sm 640 · md 768 · lg 1024 · xl 1280 */
 
   /* ---------- Radii ---------- */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
   --radius-pill: 999px;
 
-  /* ---------- Elevation ---------- */
-  --shadow-1: 0 1px 2px rgba(8, 12, 24, 0.06), 0 1px 1px rgba(8, 12, 24, 0.04);
-  --shadow-2: 0 4px 12px -2px rgba(8, 12, 24, 0.08),
-    0 2px 4px rgba(8, 12, 24, 0.04);
-  --shadow-3: 0 24px 48px -16px rgba(8, 12, 24, 0.22),
-    0 8px 16px -8px rgba(8, 12, 24, 0.1);
+  /* ---------- Elevation: blue-tinted, never grey or black ---------- */
+  --shadow-1: 0 1px 2px rgba(36, 64, 217, 0.06), 0 2px 6px rgba(36, 64, 217, 0.05);
+  --shadow-2: 0 10px 30px -12px rgba(52, 87, 255, 0.22), 0 4px 10px -4px rgba(91, 63, 224, 0.1);
+  --shadow-3: 0 30px 60px -24px rgba(52, 87, 255, 0.32), 0 12px 24px -12px rgba(91, 63, 224, 0.18);
+  --shadow-glow: 0 12px 32px -10px rgba(91, 63, 224, 0.55);
 
   /* ---------- Motion ---------- */
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-fast: 140ms;
-  --duration-base: 240ms;
-  --duration-slow: 520ms;
-  --duration-reveal: 760ms;
+  --duration-fast: 160ms;
+  --duration-base: 260ms;
+  --duration-slow: 560ms;
+  --duration-reveal: 900ms;
 
   /* ---------- Layers ---------- */
   --z-header: 50;
-  --z-overlay: 80;
 }
 
 @media (prefers-reduced-motion: reduce) {

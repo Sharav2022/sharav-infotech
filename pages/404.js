@@ -8,13 +8,15 @@ export default function NotFoundPage() {
   return (
     <>
       <Seo title="Page not found" path="/404" noindex />
-      <section className={`theme-inverse ${classes.page}`}>
-        <div className={`blueprint-grid ${classes.grid}`} aria-hidden="true" />
+      <section className={`luminous ${classes.page}`}>
+        <div className={`grid-lines ${classes.grid}`} aria-hidden="true" />
         <div className={`container ${classes.inner}`}>
           <p className={classes.code}>
             <span>HTTP</span> 404
           </p>
-          <h1 className={classes.title}>This route does not resolve.</h1>
+          <h1 className={classes.title}>
+            This route does not <span className="gradient-text">resolve.</span>
+          </h1>
           <p className="lede">
             The page may have moved during our site update, or the address may
             be mistyped.
@@ -41,4 +43,4 @@ export default function NotFoundPage() {
   );
 }
 
-NotFoundPage.layoutProps = { headerTone: "inverse", hideFooter: true };
+NotFoundPage.layoutProps = { hideFooter: true };

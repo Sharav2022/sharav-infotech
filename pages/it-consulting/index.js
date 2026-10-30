@@ -25,6 +25,7 @@ export default function ITConsultingPage() {
         title={CONSULTING.title}
         lede={CONSULTING.lede}
         trail={[{ label: "Services", href: "/services" }]}
+        image="/images/3d/it-consulting.webp"
       />
 
       <section className="section" aria-labelledby="consulting-intro">
@@ -40,7 +41,7 @@ export default function ITConsultingPage() {
         </div>
       </section>
 
-      <section className={`section ${pageClasses.raised}`} aria-labelledby="aspects-title">
+      <section className="section surface-soft" aria-labelledby="aspects-title">
         <div className="container">
           <SectionHeading
             label="Key aspects"
@@ -78,4 +79,3 @@ export default function ITConsultingPage() {
   );
 }
 
-ITConsultingPage.layoutProps = { headerTone: "inverse" };

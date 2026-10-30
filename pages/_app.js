@@ -1,13 +1,13 @@
-import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Bricolage_Grotesque, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import Layout from "../src/components/layout/Layout";
 import "../src/styles/globals.css";
 
-// Typography (see docs/DESIGN_SYSTEM.md#typography): Archivo's width axis for
+// Typography (see docs/DESIGN_SYSTEM.md#typography): Bricolage Grotesque for
 // display, IBM Plex Sans for reading, IBM Plex Mono for technical annotation.
 // Fonts are self-hosted at build time by next/font.
-const archivo = Archivo({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  axes: ["wdth"],
+  axes: ["opsz"],
   display: "swap",
 });
 
@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }) {
     <>
       <style jsx global>{`
         :root {
-          --font-archivo: ${archivo.style.fontFamily};
+          --font-bricolage: ${bricolage.style.fontFamily};
           --font-plex-sans: ${plexSans.style.fontFamily};
           --font-plex-mono: ${plexMono.style.fontFamily};
         }

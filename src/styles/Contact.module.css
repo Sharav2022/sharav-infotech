@@ -20,20 +20,27 @@
   gap: var(--space-3);
   align-items: center;
   padding: var(--space-4);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  background: var(--surface-raised);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-1);
   text-decoration: none;
   transition: border-color var(--duration-base) var(--ease-standard);
 }
 
 .channel:hover {
-  border-color: var(--indigo-500);
+  border-color: var(--violet-300);
+  box-shadow: var(--shadow-2);
 }
 
 .channel > svg {
   justify-self: center;
-  color: var(--text-accent);
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.6rem;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: #ffffff;
 }
 
 .channel strong {
@@ -64,8 +71,9 @@
   place-items: center;
   width: 1.75rem;
   height: 1.75rem;
-  border: 1px solid var(--border-strong);
   border-radius: 50%;
+  background: var(--royal-100);
+  color: var(--royal-700);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
 }
